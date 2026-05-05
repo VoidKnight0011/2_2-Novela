@@ -11,17 +11,19 @@
         ContentTemplate="{DataTemplate auth:Novela_Auth}"
         Route="auth" />
 
-    <!-- DASHBOARD -->
-    <TabBar>
-        <ShellContent
-            Shell.ForegroundColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}"
-            Shell.BackgroundColor="{AppThemeBinding Light=#EAEAEA, Dark=#2C2C2C}"
-            ContentTemplate="{DataTemplate main:Novela_Dashboard}"
-            Route="dashboard" />
+    <!-- BOOKS -->
+    <ShellContent
+        Shell.ForegroundColor="{AppThemeBinding Light=#191919, Dark=#F5F5F5}"
+        Shell.BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#191919}"
+        ContentTemplate="{DataTemplate main:Novela_Dashboard}"
+        Route="dashboard"
+    />
         
         <ShellContent
+            Shell.ForegroundColor="{AppThemeBinding Light=#191919, Dark=#F5F5F5}"
+            Shell.BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#191919}"
             ContentTemplate="{DataTemplate main:Novela_Overview}"
-            Route="overview" />
-    </TabBar>
+            Route="overview"
+        />
 
 </Shell>
