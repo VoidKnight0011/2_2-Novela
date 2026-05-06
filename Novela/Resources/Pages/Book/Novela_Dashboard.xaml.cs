@@ -106,14 +106,14 @@ public partial class Novela_Dashboard : ContentPage
         
         private async void to_editbook(object sender, EventArgs e)
         { 
-            bool answer = await DisplayAlert("Edit Book", "Do you want to edit book", "Accept", "Cancel");
+            await Shell.Current.GoToAsync("//overview");
         }
     #endregion
     
     #region Dashboard#4
         private async void to_addbook(object sender, EventArgs e)
         {
-            var popup = new Popup_AddBook();
+            var popup = new Extra_AddBook();
             
             var result = await this.ShowPopupAsync(popup);
         }

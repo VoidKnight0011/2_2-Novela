@@ -8,10 +8,20 @@ using Novela.Resources.Pages.Popups;
 
 namespace Novela.Resources.Pages.Popups;
 
-public partial class Popup_AddBook : Popup
+public partial class Extra_AddBook : Popup
 {
-    public Popup_AddBook()
+    public Extra_AddBook()
     {
         InitializeComponent();
+    }
+
+    public void popup_close(object sender, EventArgs args)
+    {
+        Close();
+    }
+
+    public void popup_save(object sender, EventArgs args)
+    {
+        
     }
 }

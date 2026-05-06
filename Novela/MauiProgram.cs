@@ -31,13 +31,22 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 fonts.AddFont("Sunborn-One.ttf", "Sunborn-One");
+                fonts.AddFont("Poppins-Light.ttf", "Poppins-Light");
+                fonts.AddFont("Poppins-Regular.ttf", "Poppins-Regular");
+                fonts.AddFont("Poppins-Black.ttf", "Poppins-Black");
             });
         
         // Pages
         builder.Services.AddSingleton<AppShell>();
         builder.Services.AddTransient<Novela_Auth>();
         builder.Services.AddTransient<Novela_Dashboard>();
-        builder.Services.AddTransient<Novela_Overview>();
+        
+            // Edit Book Pages
+            builder.Services.AddTransient<Novela_Overview>();
+            builder.Services.AddTransient<Novela_Characters>();
+            builder.Services.AddTransient<Novela_Timeline>();
+            builder.Services.AddTransient<Novela_Manuscript>();
+            builder.Services.AddTransient<Novela_Appendices>();
         
         // Services
 

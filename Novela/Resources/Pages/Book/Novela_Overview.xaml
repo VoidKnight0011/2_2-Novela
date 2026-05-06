@@ -1,35 +1,377 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Novela.Resources.Pages.Extra"
              x:Class="Novela.Resources.Pages.Book.Novela_Overview"
              Padding="0">
     
-    <!-- Header -->
     <Shell.TitleView>
         <Label Text="Novella" VerticalOptions="Center" FontFamily="Sunborn-One" 
                FontSize="Large" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
     </Shell.TitleView>
     
     <ContentPage.ToolbarItems>
-        
-        <!-- <ToolbarItem Text="Settings" Order="Secondary" Priority="0" -->
-        <!--              Clicked="" /> -->
-        <!-- <ToolbarItem Text="About" Order="Secondary" Priority="1" -->
-        <!--              Clicked="" /> -->
-        <!-- <ToolbarItem Text="Logout" Order="Secondary" Priority="2" -->
-        <!--              Clicked="" /> -->
-        
+        <ToolbarItem Text="Settings" Order="Secondary" Priority="0" Clicked="to_settings" />
+        <ToolbarItem Text="About" Order="Secondary" Priority="1" Clicked="to_about" />
+        <ToolbarItem Text="Logout" Order="Secondary" Priority="2" Clicked="to_logout" />
     </ContentPage.ToolbarItems>
     
-    <!-- MAIN Layout -->
-    <Grid RowDefinitions="auto, auto, *" VerticalOptions="Fill"
+    <Grid ColumnDefinitions="Auto, *" 
           BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}">
         
+        <!-- SIDEBAR -->
+        <views:Book_Sidebar Grid.Column="0" x:Name="Sidebar" />
         
-        
-        <!-- LAYER #1 -->
+        <!-- CONTENT -->
+        <ScrollView Grid.Column="1">
+            <VerticalStackLayout Padding="20" Spacing="20">
+                
+                <!-- Page Title -->
+                <Label Text="Overview" 
+                       FontFamily="Poppins-Black"
+                       FontSize="24" 
+                       TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+                
+                <!-- Image + Details Section -->
+                <Grid ColumnDefinitions="200, *" 
+                      RowDefinitions="Auto, Auto, Auto"
+                      ColumnSpacing="20"
+                      RowSpacing="15">
+                    
+                    <!-- Book Cover (Left, spans all rows) -->
+                    <Border Grid.Column="0" 
+                            Grid.RowSpan="3"
+                            HeightRequest="280"
+                            WidthRequest="200"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 10"
+                            Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}"
+                            BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
+                        <Grid>
+                            <Image Source="{Binding CurrentBook.BookImg, FallbackValue='placeholder.png'}" 
+                                   Aspect="AspectFill" />
+                            <Label Text="📷 Tap to change cover" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="11"
+                                   TextColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"
+                                   IsVisible="{Binding HasNoCover}" />
+                        </Grid>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="on_changecover" />
+                        </Border.GestureRecognizers>
+                    </Border>
 
+                    <!-- Title (Top-Right) -->
+                    <VerticalStackLayout Grid.Column="1" Grid.Row="0" Spacing="5">
+                        <Label Text="Title" 
+                               FontFamily="Poppins-Regular"
+                               FontSize="12"
+                               TextColor="{AppThemeBinding Light=#5A5A5A, Dark=#BDBDBD}" />
+                        <Entry Placeholder="Enter book title" 
+                               Text="{Binding CurrentBook.book_title}"
+                               FontFamily="Poppins-Regular"
+                               FontSize="14"
+                               TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"
+                               PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"
+                               BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" />
+                    </VerticalStackLayout>
+
+                    <!-- Synopsis (Middle-Right) -->
+                    <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="5">
+                        <Label Text="Synopsis" 
+                               FontFamily="Poppins-Regular"
+                               FontSize="12"
+                               TextColor="{AppThemeBinding Light=#5A5A5A, Dark=#BDBDBD}" />
+                        <Editor Placeholder="Enter book description..." 
+                                Text="{Binding CurrentBook.book_description}"
+                                HeightRequest="140"
+                                FontFamily="Poppins-Regular"
+                                FontSize="13"
+                                TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"
+                                PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"
+                                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" />
+                    </VerticalStackLayout>
+
+                    <!-- Status + Buttons (Bottom-Right) -->
+                    <Grid Grid.Column="1" Grid.Row="2" 
+                          ColumnDefinitions="Auto, *, Auto, Auto"
+                          ColumnSpacing="10">
+                        
+                        <HorizontalStackLayout Grid.Column="0" Spacing="8" VerticalOptions="Center">
+                            <Label Text="Status:" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#5A5A5A, Dark=#BDBDBD}" />
+                            <Picker ItemsSource="{Binding StatusOptions}" 
+                                    SelectedItem="{Binding CurrentBook.Status}"
+                                    WidthRequest="100"
+                                    FontFamily="Poppins-Regular"
+                                    FontSize="11"
+                                    TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"
+                                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" />
+                        </HorizontalStackLayout>
+
+                        <Button Grid.Column="2" 
+                                Text="Cancel" 
+                                Clicked="on_cancel"
+                                WidthRequest="90"
+                                HeightRequest="36"
+                                FontFamily="Poppins-Regular"
+                                FontSize="12"
+                                BackgroundColor="{AppThemeBinding Light=#E0E0E0, Dark=#3F3F3F}"
+                                TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"
+                                CornerRadius="8" />
+                        
+                        <Button Grid.Column="3" 
+                                Text="Save" 
+                                Clicked="on_save"
+                                WidthRequest="90"
+                                HeightRequest="36"
+                                FontFamily="Poppins-Black"
+                                FontSize="12"
+                                BackgroundColor="#4A90D9"
+                                TextColor="White"
+                                CornerRadius="8" />
+                    </Grid>
+                </Grid>
+
+                <!-- Genre Section -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Genre" 
+                           FontFamily="Poppins-Black"
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+                    
+                    <!-- Genre Checkboxes (3 columns) -->
+                    <FlexLayout Wrap="Wrap" 
+                                JustifyContent="Start"
+                                AlignItems="Start">
+                        
+                        <!-- Row 1 -->
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsActionSelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Action" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsFantasySelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Fantasy" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsRomanceSelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Romance" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+
+                        <!-- Row 2 -->
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsAdventureSelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Adventure" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsHistoricalSelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Historical" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsSatireSelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Satire" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+
+                        <!-- Row 3 -->
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsComedySelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Comedy" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsHorrorSelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Horror" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsSciFiSelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Sci-fi" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+
+                        <!-- Row 4 -->
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsContemporarySelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Contemporary" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsMysterySelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Mystery" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsShortStorySelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Short Story" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+
+                        <!-- Row 5 -->
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsDramaSelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Drama" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsPsychologicalSelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Psychological" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout Spacing="5" WidthRequest="180" Margin="0,5">
+                            <CheckBox IsChecked="{Binding IsThrillerSelected}" 
+                                      Color="#4A90D9" />
+                            <Label Text="Thriller" 
+                                   FontFamily="Poppins-Regular"
+                                   FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <!-- Intended Themes Section -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Intended Themes" 
+                           FontFamily="Poppins-Black"
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+                    
+                    <Grid ColumnDefinitions="*, Auto" ColumnSpacing="8">
+                        <Entry Grid.Column="0"
+                               Placeholder="Add theme (e.g., Redemption, Betrayal)"
+                               x:Name="ThemeEntry"
+                               FontFamily="Poppins-Regular"
+                               FontSize="13"
+                               TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"
+                               PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"
+                               BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" />
+                        
+                        <ImageButton Grid.Column="1"
+                                    Source="plus.png"
+                                    HeightRequest="24"
+                                    WidthRequest="24"
+                                    BackgroundColor="#4A90D9"
+                                    CornerRadius="12"
+                                    Padding="6"
+                                    Clicked="on_addtheme" />
+                    </Grid>
+
+                    <!-- Display Added Themes -->
+                    <FlexLayout x:Name="ThemesContainer"
+                                Wrap="Wrap"
+                                JustifyContent="Start"
+                                BindableLayout.ItemsSource="{Binding CurrentBook.Themes}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="0,0,8,8"
+                                        Padding="10,6"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 15"
+                                        Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}"
+                                        BackgroundColor="{AppThemeBinding Light=#F0F0F0, Dark=#2C2C2C}">
+                                    <HorizontalStackLayout Spacing="6">
+                                        <Label Text="{Binding .}" 
+                                               FontFamily="Poppins-Regular"
+                                               FontSize="11"
+                                               VerticalOptions="Center"
+                                               TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                                        <Label Text="×" 
+                                               FontSize="14"
+                                               VerticalOptions="Center"
+                                               TextColor="{AppThemeBinding Light=#757575, Dark=#9E9E9E}">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="on_removetheme" 
+                                                                     CommandParameter="{Binding .}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </HorizontalStackLayout>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+        
     </Grid>    
-    
 
 </ContentPage>

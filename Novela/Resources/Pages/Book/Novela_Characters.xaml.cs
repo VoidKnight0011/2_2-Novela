@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Novela.Resources.Pages.Book;
 
-public partial class Novela_Overview : ContentPage
+public partial class Novela_Characters : ContentPage
 {
-    public Novela_Overview()
+    public Novela_Characters()
     {
         InitializeComponent();
     }
@@ -28,20 +28,5 @@ public partial class Novela_Overview : ContentPage
     {
         await Shell.Current.GoToAsync("//auth");
     }
-    #endregion
-    
-    #region OverviewLayer#1
-    // Cover image
-    private void on_changecover(object sender, EventArgs e) { }
-
-    // Save / Cancel
-    private void on_cancel(object sender, EventArgs e) { }
-
-    private void on_save(object sender, EventArgs e) { }
-
-    // Themes
-    private void on_addtheme(object sender, EventArgs e) { }
-
-    private void on_removetheme(object sender, EventArgs e) { }
     #endregion
 }

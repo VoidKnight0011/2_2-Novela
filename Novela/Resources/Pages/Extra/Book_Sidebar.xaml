@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Novela.Resources.Pages.Extra.Book_Sidebar"
+             BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}"
+             WidthRequest="100">
+    
+    <VerticalStackLayout Spacing="5" Padding="10">
+        
+        <!-- Back to Library -->
+        <Border Padding="10" 
+                Margin="0,0,0,15"
+                BackgroundColor="Transparent">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="to_dashboard" />
+            </Border.GestureRecognizers>
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="←" FontSize="18" 
+                       TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                <Label Text="Back to Library" 
+                       TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+            </HorizontalStackLayout>
+        </Border>
+
+        <!-- Overview -->
+        <Border Padding="10"
+                x:Name="OverviewButton"
+                BackgroundColor="{AppThemeBinding Light=#F0F0F0, Dark=#2C2C2C}">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="to_overview" />
+            </Border.GestureRecognizers>
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="📄" FontSize="16" />
+                <Label Text="Overview" 
+                       TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+            </HorizontalStackLayout>
+        </Border>
+
+        <!-- Characters -->
+        <Border Padding="10"
+                x:Name="CharactersButton"
+                BackgroundColor="Transparent">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="to_characters" />
+            </Border.GestureRecognizers>
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="👤" FontSize="16" />
+                <Label Text="Characters" 
+                       TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+            </HorizontalStackLayout>
+        </Border>
+
+        <!-- Timeline -->
+        <Border Padding="10"
+                x:Name="TimelineButton"
+                BackgroundColor="Transparent">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="to_timeline" />
+            </Border.GestureRecognizers>
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="⏳" FontSize="16" />
+                <Label Text="Timeline" 
+                       TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+            </HorizontalStackLayout>
+        </Border>
+
+        <!-- Manuscript -->
+        <Border Padding="10"
+                x:Name="ManuscriptButton"
+                BackgroundColor="Transparent">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="to_manuscript" />
+            </Border.GestureRecognizers>
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="📕" FontSize="16" />
+                <Label Text="Manuscript" 
+                       TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+            </HorizontalStackLayout>
+        </Border>
+
+        <!-- Appendices -->
+        <Border Padding="10"
+                x:Name="AppendicesButton"
+                BackgroundColor="Transparent">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="to_appendices" />
+            </Border.GestureRecognizers>
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="🌏" FontSize="16" />
+                <Label Text="Appendices" 
+                       TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+            </HorizontalStackLayout>
+        </Border>
+
+    </VerticalStackLayout>
+    
+</ContentView>

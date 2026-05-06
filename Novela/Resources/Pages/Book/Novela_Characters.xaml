@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Novela.Resources.Pages.Extra"
+             x:Class="Novela.Resources.Pages.Book.Novela_Characters"
+             Padding="0">
+    
+    <Shell.TitleView>
+        <Label Text="Novella" VerticalOptions="Center" FontFamily="Sunborn-One" 
+               FontSize="Large" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+    </Shell.TitleView>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Settings" Order="Secondary" Priority="0" Clicked="to_settings" />
+        <ToolbarItem Text="About" Order="Secondary" Priority="1" Clicked="to_about" />
+        <ToolbarItem Text="Logout" Order="Secondary" Priority="2" Clicked="to_logout" />
+    </ContentPage.ToolbarItems>
+    
+    <Grid ColumnDefinitions="Auto, *" 
+          BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}">
+        
+        <!-- SIDEBAR -->
+        <views:Book_Sidebar Grid.Column="0" x:Name="Sidebar" />
+        
+        <!-- CONTENT -->
+            <VerticalStackLayout Padding="20" Spacing="20">
+                
+                <!-- Page Title -->
+                <Label Text="Characters" 
+                       FontFamily="Poppins-Black"
+                       FontSize="24" 
+                       TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+            </VerticalStackLayout>    
+    </Grid>    
+
+</ContentPage>
