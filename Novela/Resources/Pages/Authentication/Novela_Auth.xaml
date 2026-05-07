@@ -8,12 +8,14 @@
     
     <Grid BackgroundColor="{AppThemeBinding Light=#EAEAEA, Dark=#2C2C2C}">
     
-        <VerticalStackLayout VerticalOptions="Center" Spacing="40" Padding="20">
+        <VerticalStackLayout VerticalOptions="Center" Spacing="5" Padding="20">
             
             <!-- GRID #1: "Novela" -->
             <VerticalStackLayout Spacing="10">
-                <Image Source="novela_logo.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
-                <Label Text="Novela" HorizontalTextAlignment="Center" FontSize="Large" FontFamily="Sunborn-One" />
+                <Image Source="{AppThemeBinding Light=novela_logo_light.png,
+                                  Dark=novela_logo_dark.png}" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>    
+                <Label Text="Novela" HorizontalTextAlignment="Center" FontSize="Large" FontFamily="Sunborn-One"
+                       TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}"/>
             </VerticalStackLayout>
 
             <!-- GRID #2: Sign In -->
@@ -23,19 +25,22 @@
                 </Border.StrokeShape>
 
                 <VerticalStackLayout Spacing="10">
-                    <Entry x:Name="si_user" Placeholder="Username" />
+                    <Entry x:Name="si_user" Placeholder="Username" 
+                           FontFamily="Poppins-Light" PlaceholderColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" />
                     <Grid>
-                        <Entry x:Name="si_psswd" IsPassword="True" Placeholder="Password" />
+                        <Entry x:Name="si_psswd" IsPassword="True" Placeholder="Password" 
+                               FontFamily="Poppins-Light" PlaceholderColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}"/>
                         <ImageButton HorizontalOptions="End" Source="icon_closedeye.png" 
                                      HeightRequest="10" WidthRequest="10" VerticalOptions="Center"
                                      Clicked="psswd_visibility" CommandParameter="{x:Reference si_psswd}" />
                     </Grid>
                 
-                    <Button Text="Sign In" Clicked="sign_in" CornerRadius="10" Margin="0,10,0,0" />
+                    <Button Text="Sign In" Clicked="sign_in" CornerRadius="10" Margin="0,10,0,0" BackgroundColor="#4A90D9"
+                            FontFamily="Poppins-Black" TextColor="#234263"/>
                 
-                    <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10,0,0">
-                        <Label Text="Don't have an account? " FontSize="Micro" />
-                        <Label Text="Sign Up" TextColor="Blue" FontSize="Micro">
+                    <HorizontalStackLayout HorizontalOptions="Center" Margin="0">
+                        <Label Text="Don't have an account? " FontSize="Micro" FontFamily="Poppins-Light" />
+                        <Label Text="Sign Up" TextColor="#4A90D9" FontSize="Micro" FontFamily="Poppins-Light">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="to_signup" />
                             </Label.GestureRecognizers>
@@ -51,25 +56,29 @@
                 </Border.StrokeShape>
 
                 <VerticalStackLayout Spacing="10">
-                    <Entry x:Name="su_user" Placeholder="Username" />
+                    <Entry x:Name="su_user" Placeholder="Username" 
+                           FontFamily="Poppins-Light" PlaceholderColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}"/>
                     <Grid>
-                        <Entry x:Name="su_psswd1" IsPassword="True" Placeholder="Password" />
+                        <Entry x:Name="su_psswd1" IsPassword="True" Placeholder="Password"
+                               FontFamily="Poppins-Light" PlaceholderColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}"/>
                         <ImageButton HorizontalOptions="End" Source="icon_closedeye.png" 
                                      HeightRequest="10" WidthRequest="10" VerticalOptions="Center"
                                      Clicked="psswd_visibility" CommandParameter="{x:Reference su_psswd1}" />
                     </Grid>
                     <Grid>
-                        <Entry x:Name="su_psswd2" IsPassword="True" Placeholder="Confirm Password" />
+                        <Entry x:Name="su_psswd2" IsPassword="True" Placeholder="Confirm Password"
+                               FontFamily="Poppins-Light" PlaceholderColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}"/>
                         <ImageButton HorizontalOptions="End" Source="icon_closedeye.png" 
                                      HeightRequest="10" WidthRequest="10" VerticalOptions="Center"
                                      Clicked="psswd_visibility" CommandParameter="{x:Reference su_psswd2}" />
                     </Grid>
                 
-                    <Button Text="Sign Up" Clicked="sign_up" CornerRadius="10" Margin="0,10,0,0" />
+                    <Button Text="Sign Up" Clicked="sign_up" CornerRadius="10" Margin="0,10,0,0" BackgroundColor="#4A90D9"
+                            FontFamily="Poppins-Black" TextColor="#234263"/>
                 
-                    <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10,0,0">
-                        <Label Text="Already have an account? " FontSize="Micro" />
-                        <Label Text="Sign In" TextColor="Blue" FontSize="Micro">
+                    <HorizontalStackLayout HorizontalOptions="Center" Margin="0">
+                        <Label Text="Already have an account? " FontSize="Micro" FontFamily="Poppins-Light" />
+                        <Label Text="Sign In" TextColor="#4A90D9" FontSize="Micro" FontFamily="Poppins-Regular">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="to_signin" />
                             </Label.GestureRecognizers>

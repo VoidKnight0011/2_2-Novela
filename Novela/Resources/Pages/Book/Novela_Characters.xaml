@@ -6,7 +6,7 @@
              Padding="0">
     
     <Shell.TitleView>
-        <Label Text="Novella" VerticalOptions="Center" FontFamily="Sunborn-One" 
+        <Label Text="Novela" VerticalOptions="Center" FontFamily="Sunborn-One" 
                FontSize="Large" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
     </Shell.TitleView>
     
@@ -16,21 +16,14 @@
         <ToolbarItem Text="Logout" Order="Secondary" Priority="2" Clicked="to_logout" />
     </ContentPage.ToolbarItems>
     
-    <Grid ColumnDefinitions="Auto, *" 
-          BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}">
+    <Grid>    
+        <!-- CONTENT -->
+        <ScrollView>
+          
+        </ScrollView>
         
         <!-- SIDEBAR -->
-        <views:Book_Sidebar Grid.Column="0" x:Name="Sidebar" />
-        
-        <!-- CONTENT -->
-            <VerticalStackLayout Padding="20" Spacing="20">
-                
-                <!-- Page Title -->
-                <Label Text="Characters" 
-                       FontFamily="Poppins-Black"
-                       FontSize="24" 
-                       TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
-            </VerticalStackLayout>    
+        <views:Book_Sidebar ZIndex="2" x:Name="Sidebar" HorizontalOptions="Start" VerticalOptions="Fill" />
+    
     </Grid>    
-
 </ContentPage>

@@ -3,6 +3,7 @@ using Novela.Resources.Pages.Authentication;
 using Novela.Resources.Pages.Book;
 using Microsoft.Maui.Handlers;
 using CommunityToolkit.Maui;
+using Novela.Resources.Services;
 using UXDivers.Popups.Maui;
 
 
@@ -40,6 +41,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<AppShell>();
         builder.Services.AddTransient<Novela_Auth>();
         builder.Services.AddTransient<Novela_Dashboard>();
+        
+            // Services
+            builder.Services.AddSingleton<Service_SidebarState>(s => Service_SidebarState.Instance);
         
             // Edit Book Pages
             builder.Services.AddTransient<Novela_Overview>();

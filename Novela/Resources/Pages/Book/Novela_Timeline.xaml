@@ -1,9 +1,29 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Novela.Resources.Pages.Book.Novela_Timeline">
-    <ContentPage.Content>
+             xmlns:views="clr-namespace:Novela.Resources.Pages.Extra"
+             x:Class="Novela.Resources.Pages.Book.Novela_Timeline"
+             Padding="0">
+    
+    <Shell.TitleView>
+        <Label Text="Novela" VerticalOptions="Center" FontFamily="Sunborn-One" 
+               FontSize="Large" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+    </Shell.TitleView>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Settings" Order="Secondary" Priority="0" Clicked="to_settings" />
+        <ToolbarItem Text="About" Order="Secondary" Priority="1" Clicked="to_about" />
+        <ToolbarItem Text="Logout" Order="Secondary" Priority="2" Clicked="to_logout" />
+    </ContentPage.ToolbarItems>
+    
+    <Grid>    
+        <!-- CONTENT -->
+        <ScrollView>
+          
+        </ScrollView>
         
-    </ContentPage.Content>
+        <!-- SIDEBAR -->
+        <views:Book_Sidebar ZIndex="2" x:Name="Sidebar" HorizontalOptions="Start" VerticalOptions="Fill" />
+    
+    </Grid>    
 </ContentPage>

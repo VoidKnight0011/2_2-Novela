@@ -3,14 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Novela.Resources;
+using Novela.Resources.Services;
 
 namespace Novela.Resources.Pages.Book;
 
 public partial class Novela_Characters : ContentPage
 {
+    private readonly Service_SidebarState _sidebarState;
+    
     public Novela_Characters()
     {
         InitializeComponent();
+        _sidebarState = Service_SidebarState.Instance;
+        
+        Sidebar.set_activeitem("characters");
+        Sidebar.sidebar_toggled += on_togglesidebar;
+        WidthRequest = _sidebarState.IsSideBarOpen ? 150 : 60;
+    }
+    
+    private async void on_togglesidebar(object sender, bool isopen)
+    {
+        Sidebar.WidthRequest = isopen ? 150 : 60;
     }
     
     #region DashboardLayer#0

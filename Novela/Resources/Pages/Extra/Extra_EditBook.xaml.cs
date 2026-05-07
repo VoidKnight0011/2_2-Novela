@@ -7,13 +7,18 @@ using CommunityToolkit.Maui.Views;
 
 namespace Novela.Resources.Pages.Extra;
 
-public partial class Extra_AddBook : Popup
+public partial class Extra_EditBook : Popup
 {
-    public Extra_AddBook()
+    public Extra_EditBook()
     {
         InitializeComponent();
     }
 
+    public async void on_editcover(object sender, EventArgs args)
+    {
+        
+    }
+    
     public void popup_close(object sender, EventArgs args)
     {
         Close();

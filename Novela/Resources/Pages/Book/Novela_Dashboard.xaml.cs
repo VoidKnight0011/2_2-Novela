@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Views;
 using Microsoft.Maui.Controls.Shapes;
-using Novela.Resources.Pages.Popups;
+using Novela.Resources.Pages.Extra;
 
 namespace Novela.Resources.Pages.Book;
 
@@ -101,7 +101,9 @@ public partial class Novela_Dashboard : ContentPage
     #region DashboardLayer#3
         private async void book_options(object sender, EventArgs e)
         {
+            var popup = new Extra_EditBook();
             
+            var result = await this.ShowPopupAsync(popup);
         }
         
         private async void to_editbook(object sender, EventArgs e)

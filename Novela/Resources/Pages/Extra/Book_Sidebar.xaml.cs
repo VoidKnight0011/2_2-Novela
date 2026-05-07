@@ -3,23 +3,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Maui.Views;
+using Novela.Resources.Services;
 
 namespace Novela.Resources.Pages.Extra;
 
 public partial class Book_Sidebar : ContentView
 {
-    public event EventHandler BackToLibraryClicked;
-    public event EventHandler OverviewClicked;
-    public event EventHandler CharactersClicked;
-    public event EventHandler TimelineClicked;
-    public event EventHandler ManuscriptClicked;
-    public event EventHandler AppendicesClicked;
     
     public Book_Sidebar()
     {
         InitializeComponent();
+        _sidebarstate = Service_SidebarState.Instance;
+        _sidebarstate.SidebarState = global_sidebarstate;
+        toggle_sidebar.Rotation = _sidebarstate.rotation;
     }
 
+    
+    #region sidebar
+    private readonly Service_SidebarState _sidebarstate;
+    public event EventHandler<bool> sidebar_toggled;
+
+    private void global_sidebarstate(object? sender, EventArgs e)
+    {
+        sidebar_toggled?.Invoke(sender, _sidebarstate.IsSideBarOpen);
+    }
+
+    public void on_togglesidebar(object sender, EventArgs e)
+    {
+        var state = Service_SidebarState.Instance;
+
+        state.sidebar_state(!state.IsSideBarOpen);
+
+        state.rotation = (state.rotation + 180) % 360;
+
+        toggle_sidebar.Rotation = state.rotation;
+    }
+
+    public void set_activeitem(string itemName)
+    {
+        // Reset all
+        button_overview.BackgroundColor = Colors.Transparent;
+        button_characters.BackgroundColor = Colors.Transparent;
+        button_timeline.BackgroundColor = Colors.Transparent;
+        button_manuscript.BackgroundColor = Colors.Transparent;
+        button_appendices.BackgroundColor = Colors.Transparent;
+
+        // Highlight active
+        var activeColor = Application.Current.RequestedTheme == AppTheme.Dark
+            ? Color.FromArgb("#2C2C2C")
+            : Color.FromArgb("#F0F0F0");
+
+        switch (itemName.ToLower())
+        {
+            case "overview":
+                button_overview.BackgroundColor = activeColor;
+                break;
+            case "characters":
+                button_characters.BackgroundColor = activeColor;
+                break;
+            case "timeline":
+                button_timeline.BackgroundColor = activeColor;
+                break;
+            case "manuscript":
+                button_manuscript.BackgroundColor = activeColor;
+                break;
+            case "appendices":
+                button_appendices.BackgroundColor = activeColor;
+                break;
+        }
+    }
+    #endregion
+
+    #region SideBar_Items
     public async void to_dashboard(object? sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("//dashboard");
@@ -49,4 +105,5 @@ public partial class Book_Sidebar : ContentView
     {
         await Shell.Current.GoToAsync("//appendices");
     }
+    #endregion
 }

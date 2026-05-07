@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Novela.Resources.Pages.Book.Novela_Dashboard"
              Padding="0">
 
     <Shell.TitleView>
-        <Label Text="Novella" VerticalOptions="Center" FontFamily="Sunborn-One"
+        <Label Text="Novela" VerticalOptions="Center" FontFamily="Sunborn-One"
                FontSize="Large" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
     </Shell.TitleView>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Settings" Order="Secondary" Priority="0" Clicked="to_settings" />
+        <ToolbarItem Text="Settings" Order="Secondary" Priority="0" Clicked="to_settings"/>
         <ToolbarItem Text="About" Order="Secondary" Priority="1" Clicked="to_about" />
         <ToolbarItem Text="Logout"   Order="Secondary" Priority="2" Clicked="to_logout" />
     </ContentPage.ToolbarItems>
@@ -21,10 +22,10 @@
         <!-- LAYER #1 — Filter / Search / Toggle -->
         <Grid Grid.Row="0" ColumnDefinitions="Auto, *, Auto" ColumnSpacing="-2.5" Padding="16, 5">
 
-            <Border Grid.Column="0" Padding="6, 0" HeightRequest="38" WidthRequest="78" StrokeThickness="1" StrokeShape="RoundRectangle 8"
+            <Border Grid.Column="0" Padding="6, 0" HeightRequest="38" WidthRequest="78" StrokeThickness="2.5" StrokeShape="RoundRectangle 8"
                     BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
                 <Picker Title="Status" ItemsSource="{Binding StatusOptions}" SelectedItem="{Binding DefaultStatus}" HorizontalOptions="Center" VerticalOptions="Center" 
-                        FontFamily="Poppins-Regular" FontSize="12" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        FontFamily="Poppins-Regular" FontSize="10" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
             </Border>
 
             <SearchBar Grid.Column="1" VerticalOptions="Center" Placeholder="Search books..."
@@ -44,6 +45,7 @@
             </CollectionView.ItemsLayout>
 
             <CollectionView.ItemTemplate>
+                
                 <DataTemplate>
                     <Border HeightRequest="230" StrokeThickness="0" StrokeShape="RoundRectangle 10">
                         <Border.GestureRecognizers>
@@ -52,43 +54,32 @@
 
                         <Grid>
                             <Image Source="grid.png" Aspect="AspectFill" />
-                            <Grid VerticalOptions="End"
-                                  Padding="8, 6"
-                                  ColumnDefinitions="*, Auto"
-                                  BackgroundColor="#99000000">
-                                <Label Grid.Column="0"
-                                       Text="{Binding book_title}"
-                                       FontFamily="Poppins-Light"
-                                       FontSize="12"
-                                       TextColor="White"
-                                       VerticalOptions="Center"
-                                       LineBreakMode="TailTruncation"
-                                       MaxLines="1" />
-                                <ImageButton Grid.Column="1"
-                                             Source="icon_edit.png"
-                                             HeightRequest="18"
-                                             WidthRequest="18"
-                                             Clicked="book_options"
-                                             BackgroundColor="Transparent"
-                                             VerticalOptions="Center" />
+                            <Grid VerticalOptions="End" Padding="8, 12" ColumnDefinitions="*, Auto"
+                                  BackgroundColor="{AppThemeBinding Light=#BFFFFFFF ,Dark=#BF000000}">
+                                <Label Grid.Column="0" Text="{Binding book_title}" VerticalOptions="Center" 
+                                       LineBreakMode="TailTruncation" MaxLines="1"
+                                       FontFamily="Poppins-Light" FontSize="12" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" />
+                                <ImageButton Clicked="book_options" CommandParameter="{Binding .}" Grid.Column="1"  Source="{AppThemeBinding Light=novela_edit_light.png, Dark=novela_edit_dark.png}" HeightRequest="15" WidthRequest="15" MinimumHeightRequest="15"  MinimumWidthRequest="15" VerticalOptions="Center"  Aspect="AspectFit" Padding="25" Rotation="180"
+                                             BackgroundColor="Transparent" />    
                             </Grid>
                         </Grid>
                     </Border>
                 </DataTemplate>
+                
             </CollectionView.ItemTemplate>
         </CollectionView>
 
         <!-- LAYER #4 — FAB -->
-        <Border StrokeThickness="0" Grid.Row="3" HorizontalOptions="End" VerticalOptions="End" Margin="16, 20" StrokeShape="RoundRectangle 10"
+        <Border StrokeThickness="0" Grid.Row="2" HorizontalOptions="End" VerticalOptions="End" Margin="16, 20" StrokeShape="RoundRectangle 10"
                 BackgroundColor="#4A90D9">
             <Border.GestureRecognizers>
                 <TapGestureRecognizer Tapped="to_addbook" />
             </Border.GestureRecognizers>
 
             <HorizontalStackLayout Spacing="5" Padding="12, 8">
-                <Image Source="plus.png" HeightRequest="11" WidthRequest="11" VerticalOptions="Center" />
+                <Image Source="icon_add.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
                 <Label Text="Add Book" VerticalOptions="Center"
-                       FontFamily="Poppins-Black" FontSize="13" TextColor="White"/>
+                       FontFamily="Poppins-Black" FontSize="13" TextColor="#234263"/>
             </HorizontalStackLayout>
         </Border>
 
