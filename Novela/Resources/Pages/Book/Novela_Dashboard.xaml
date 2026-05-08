@@ -5,11 +5,6 @@
              x:Class="Novela.Resources.Pages.Book.Novela_Dashboard"
              Padding="0">
 
-    <Shell.TitleView>
-        <Label Text="Novela" VerticalOptions="Center" FontFamily="Sunborn-One"
-               FontSize="Large" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
-    </Shell.TitleView>
-
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Settings" Order="Secondary" Priority="0" Clicked="to_settings"/>
         <ToolbarItem Text="About" Order="Secondary" Priority="1" Clicked="to_about" />
@@ -51,7 +46,7 @@
                         <Border.GestureRecognizers>
                             <TapGestureRecognizer Tapped="to_editbook" />
                         </Border.GestureRecognizers>
-
+                        
                         <Grid>
                             <Image Source="grid.png" Aspect="AspectFill" />
                             <Grid VerticalOptions="End" Padding="8, 12" ColumnDefinitions="*, Auto"
@@ -59,7 +54,7 @@
                                 <Label Grid.Column="0" Text="{Binding book_title}" VerticalOptions="Center" 
                                        LineBreakMode="TailTruncation" MaxLines="1"
                                        FontFamily="Poppins-Light" FontSize="12" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" />
-                                <ImageButton Clicked="book_options" CommandParameter="{Binding .}" Grid.Column="1"  Source="{AppThemeBinding Light=novela_edit_light.png, Dark=novela_edit_dark.png}" HeightRequest="15" WidthRequest="15" MinimumHeightRequest="15"  MinimumWidthRequest="15" VerticalOptions="Center"  Aspect="AspectFit" Padding="25" Rotation="180"
+                                <ImageButton Clicked="book_options" CommandParameter="{Binding .}" Grid.Column="1"  Source="{AppThemeBinding Light=novela_edit_light.png, Dark=novela_edit_dark.png}" HeightRequest="32" WidthRequest="32" MinimumHeightRequest="32"  MinimumWidthRequest="32" Padding="5" VerticalOptions="Center"  Aspect="AspectFit"
                                              BackgroundColor="Transparent" />    
                             </Grid>
                         </Grid>
@@ -70,11 +65,14 @@
         </CollectionView>
 
         <!-- LAYER #4 — FAB -->
-        <Border StrokeThickness="0" Grid.Row="2" HorizontalOptions="End" VerticalOptions="End" Margin="16, 20" StrokeShape="RoundRectangle 10"
-                BackgroundColor="#4A90D9">
+        <Border StrokeThickness="2.5" Grid.Row="2" HorizontalOptions="End" VerticalOptions="End" Margin="16, 20" StrokeShape="RoundRectangle 10" Padding="1.5"
+                BackgroundColor="#4A90D9" Stroke="#234263">
             <Border.GestureRecognizers>
                 <TapGestureRecognizer Tapped="to_addbook" />
             </Border.GestureRecognizers>
+            <Border.Behaviors>
+                <toolkit:TouchBehavior PressedScale="0.97" DefaultAnimationDuration="80"/>
+            </Border.Behaviors>
 
             <HorizontalStackLayout Spacing="5" Padding="12, 8">
                 <Image Source="icon_add.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />

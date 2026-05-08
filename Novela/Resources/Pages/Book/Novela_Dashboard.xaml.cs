@@ -92,10 +92,10 @@ public partial class Novela_Dashboard : ContentPage
             await Shell.Current.GoToAsync("//auth");
         }
     #endregion
-
+    
     #region DashboardLayer#1
-        public Array StatusOptions => Enum.GetValues(typeof(Status));
-        public Status DefaultStatus { get; set; } = Status.Draft;
+        public static readonly Status[] StatusOptions = Enum.GetValues<Status>();
+        public const Status DefaultStatus = Status.Draft;
     #endregion
 
     #region DashboardLayer#3

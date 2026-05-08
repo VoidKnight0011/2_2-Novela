@@ -1,6 +1,6 @@
 ﻿namespace Novela.Resources.Services;
 
-public class BookService
+public class Service_Book
 {
     
 }

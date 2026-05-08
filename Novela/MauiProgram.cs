@@ -51,8 +51,6 @@ public static class MauiProgram
             builder.Services.AddTransient<Novela_Timeline>();
             builder.Services.AddTransient<Novela_Manuscript>();
             builder.Services.AddTransient<Novela_Appendices>();
-        
-        // Services
 
 #if DEBUG
         builder.Logging.AddDebug();

@@ -2,22 +2,20 @@
 
 public class Service_SidebarState
 {
-    public static Service_SidebarState _instance;
+    private static Service_SidebarState _instance;
     public static Service_SidebarState Instance => _instance ??= new Service_SidebarState();
-    
-    private Service_SidebarState() {}
+
+    private Service_SidebarState() { }
 
     public bool IsSideBarOpen { get; set; } = true;
-    public int rotation { get; set; } = 0;
+    public double Rotation    { get; set; } = 0;
 
-    public EventHandler SidebarState;
+    public event EventHandler<bool> SidebarStateChanged;
 
-    public void sidebar_state(bool sidebar_state)
+    public void SetState(bool isOpen)
     {
-        if (IsSideBarOpen != sidebar_state)
-        {
-            IsSideBarOpen = sidebar_state;
-            SidebarState?.Invoke(this, EventArgs.Empty);
-        }
+        if (IsSideBarOpen == isOpen) return;
+        IsSideBarOpen = isOpen;
+        SidebarStateChanged?.Invoke(this, IsSideBarOpen);
     }
 }

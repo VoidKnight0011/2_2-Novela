@@ -5,11 +5,6 @@
              x:Class="Novela.Resources.Pages.Book.Novela_Timeline"
              Padding="0">
     
-    <Shell.TitleView>
-        <Label Text="Novela" VerticalOptions="Center" FontFamily="Sunborn-One" 
-               FontSize="Large" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
-    </Shell.TitleView>
-    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Settings" Order="Secondary" Priority="0" Clicked="to_settings" />
         <ToolbarItem Text="About" Order="Secondary" Priority="1" Clicked="to_about" />
@@ -18,12 +13,34 @@
     
     <Grid>    
         <!-- CONTENT -->
-        <ScrollView>
-          
+        <ScrollView Margin="60, 0, 0, 0">
+            <VerticalStackLayout Padding="20" Spacing="20">
+                
+                <!-- Title -->
+                <Label Text="Timeline" HorizontalTextAlignment="Center"
+                       FontFamily="Poppins-Black" FontSize="24" 
+                       TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+                
+                <!-- Timeline Content Placeholder -->
+                <Label Text="Timeline events will be displayed here..." 
+                       FontFamily="Poppins-Regular" FontSize="14"
+                       TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+                
+                <!-- Add Event Button -->
+                <Button Text="Add Event" 
+                        FontFamily="Poppins-Black" 
+                        HeightRequest="45"
+                        CornerRadius="8"
+                        BackgroundColor="#2E7D32"
+                        TextColor="White"
+                        Clicked="on_addevent"/>
+                
+            </VerticalStackLayout>
         </ScrollView>
         
         <!-- SIDEBAR -->
-        <views:Book_Sidebar ZIndex="2" x:Name="Sidebar" HorizontalOptions="Start" VerticalOptions="Fill" />
+        <views:Book_Sidebar ZIndex="2" x:Name="Sidebar" HorizontalOptions="Start" 
+                            VerticalOptions="Fill" SafeAreaEdges="None"/>
     
     </Grid>    
 </ContentPage>

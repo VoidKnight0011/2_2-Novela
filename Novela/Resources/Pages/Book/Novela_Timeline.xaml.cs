@@ -10,31 +10,56 @@ namespace Novela.Resources.Pages.Book;
 public partial class Novela_Timeline : ContentPage
 {
     private readonly Service_SidebarState _sidebarState;
+    
     public Novela_Timeline()
     {
         InitializeComponent();
         _sidebarState = Service_SidebarState.Instance;
         Sidebar.set_activeitem("timeline");
         Sidebar.sidebar_toggled += on_togglesidebar;
-        WidthRequest = _sidebarState.IsSideBarOpen ? 150 : 60;
+        BindingContext = this;
     }
     
-    private async void on_togglesidebar(object sender, bool isopen)
+    protected override void OnAppearing()
     {
-        Sidebar.WidthRequest = isopen ? 150 : 60;
+        base.OnAppearing();
+        Sidebar.WidthRequest = _sidebarState.IsSideBarOpen ? 150 : 60;
     }
     
-    #region DashboardLayer#0
-    private void to_settings (object sender, EventArgs e)
+    #region Sidebar
+    public async void on_togglesidebar(object sender, bool isopen)
     {
+        double sidebarWidth = isopen ? 150 : 60;
 
+        var tcs = new TaskCompletionSource();
+
+        var animation = new Animation(
+            v => Sidebar.WidthRequest = v,
+            Sidebar.Width,
+            sidebarWidth);
+
+        animation.Commit(
+            this,
+            "SidebarWidth",
+            16,
+            1000,
+            Easing.CubicInOut,
+            (v, c) => tcs.SetResult());
+
+        await tcs.Task;
     }
-
-    private void to_about(object sender, EventArgs e)
+    #endregion
+    
+    #region Timeline Actions
+    private void on_addevent(object sender, EventArgs e)
     {
-
+        // TODO: Show popup to add timeline event
     }
-
+    #endregion
+    
+    #region Toolbar
+    private void to_settings(object sender, EventArgs e) { }
+    private void to_about(object sender, EventArgs e) { }
     private async void to_logout(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("//auth");

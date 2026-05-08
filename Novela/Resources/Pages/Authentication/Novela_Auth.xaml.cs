@@ -13,6 +13,7 @@ public partial class Novela_Auth : ContentPage
     public Novela_Auth()
     {
         InitializeComponent();
+        Shell.SetTitleView(this, null);
     }
 
     // Toggle Sign In/Out

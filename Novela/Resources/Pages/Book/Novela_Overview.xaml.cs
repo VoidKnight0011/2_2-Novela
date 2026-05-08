@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Novela.Resources.Services;
+using Novela.Resources.Enums;
 
 namespace Novela.Resources.Pages.Book;
 
@@ -17,9 +18,15 @@ public partial class Novela_Overview : ContentPage
         _sidebarState = Service_SidebarState.Instance;
         Sidebar.set_activeitem("overview");
         Sidebar.sidebar_toggled += on_togglesidebar;
-        WidthRequest = _sidebarState.IsSideBarOpen ? 150 : 60;
+        BindingContext = this;
     }
     
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        Sidebar.WidthRequest = _sidebarState.IsSideBarOpen ? 150 : 60;
+    }
+
     #region DashboardLayer#0
     private void to_settings (object sender, EventArgs e)
     {
@@ -39,9 +46,26 @@ public partial class Novela_Overview : ContentPage
     
     #region OverviewLayer#1
 
-    private async void on_togglesidebar(object sender, bool isopen)
+    public async void on_togglesidebar(object sender, bool isopen)
     {
-        Sidebar.WidthRequest = isopen ? 150 : 60;
+        double sidebarWidth = isopen ? 150 : 60;
+
+        var tcs = new TaskCompletionSource();
+
+        var animation = new Animation(
+            v => Sidebar.WidthRequest = v,
+            Sidebar.Width,
+            sidebarWidth);
+
+        animation.Commit(
+            this,
+            "SidebarWidth",
+            16,
+            1000,
+            Easing.CubicInOut,
+            (v, c) => tcs.SetResult());
+
+        await tcs.Task;
     }
         
     // Cover image
@@ -56,5 +80,9 @@ public partial class Novela_Overview : ContentPage
     private void on_addtheme(object sender, EventArgs e) { }
 
     private void on_removetheme(object sender, EventArgs e) { }
+    #endregion
+    
+    #region DashboardLayer#1
+        public Book_Genre[] GenreOptions { get; } = Enum.GetValues<Book_Genre>();
     #endregion
 }

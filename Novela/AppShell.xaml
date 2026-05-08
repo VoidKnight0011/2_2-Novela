@@ -6,6 +6,11 @@
     xmlns:main="clr-namespace:Novela.Resources.Pages.Book"
     FlyoutBehavior="Disabled">
 
+    <Shell.TitleView>
+        <Label Text="Novela" VerticalOptions="Center" FontFamily="Sunborn-One" 
+               FontSize="Large" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+    </Shell.TitleView>
+    
     <!-- AUTH -->
     <ShellContent
         ContentTemplate="{DataTemplate auth:Novela_Auth}"
