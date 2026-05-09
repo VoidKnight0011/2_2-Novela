@@ -23,7 +23,7 @@
                 <Border StrokeThickness="1" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}" StrokeShape="RoundRectangle 8" Padding="10,6"
                         BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
 
-                    <Editor Placeholder="Enter Book Title" AutoSize="TextChanges"
+                    <Editor Placeholder="Enter Book Title" AutoSize="TextChanges" x:Name="book_title"
                             FontFamily="Poppins-Light" FontSize="13" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
                 </Border>
             </VerticalStackLayout>
@@ -36,7 +36,7 @@
                 <Border StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,6" HeightRequest="100"
                         BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
 
-                    <Editor Placeholder="Enter Book Description..." FontSize="13"
+                    <Editor Placeholder="Enter Book Description..." FontSize="13" x:Name="book_desc"
                             FontFamily="Poppins-Light" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
                 </Border>
             </VerticalStackLayout>
@@ -60,7 +60,7 @@
                 <Border Grid.Column="1" StrokeThickness="0" HeightRequest="42" StrokeShape="RoundRectangle 8"
                         BackgroundColor="#2E7D32">
                     <Button.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="popup_close"/>
+                        <TapGestureRecognizer Tapped="to_addbook"/>
                     </Button.GestureRecognizers>
                     
                     <Label Text="Save" HorizontalOptions="Center" VerticalOptions="Center" FontSize="13"

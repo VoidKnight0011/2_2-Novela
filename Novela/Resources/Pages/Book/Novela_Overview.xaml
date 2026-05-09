@@ -1,18 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:Novela.Resources.Pages.Extra"
              x:Class="Novela.Resources.Pages.Book.Novela_Overview"
              Padding="0">
     
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Settings" Order="Secondary" Priority="0" Clicked="to_settings" />
-        <ToolbarItem Text="About" Order="Secondary" Priority="1" Clicked="to_about" />
-        <ToolbarItem Text="Logout" Order="Secondary" Priority="2" Clicked="to_logout" />
-    </ContentPage.ToolbarItems>
-    
-    <Grid>    
-        <ScrollView Margin="60, 0, 0, 0">
+        <ScrollView>
             <VerticalStackLayout Padding="20" Spacing="20">
                 
                 <!-- Row#1: Title -->
@@ -130,8 +122,5 @@
                 
             </VerticalStackLayout>    
         </ScrollView>
-        
-            <views:Book_Sidebar ZIndex="2" x:Name="Sidebar" HorizontalOptions="Start" VerticalOptions="Fill" SafeAreaEdges="None"/>
     
-    </Grid>    
-</ContentPage>
+</ContentView>

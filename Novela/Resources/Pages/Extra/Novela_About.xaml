@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Novela.Resources.Pages.Extra.Novela_About"
+             Padding="0">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Settings" Order="Secondary" Priority="0" Clicked="to_settings"/>
+        <ToolbarItem Text="About" Order="Secondary" Priority="1" Clicked="to_about" />
+        <ToolbarItem Text="Logout"   Order="Secondary" Priority="2" Clicked="to_logout" />
+    </ContentPage.ToolbarItems>
+
+    
+    <Grid RowDefinitions="Auto, Auto, *" RowSpacing="5"
+          BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}">
+        
+        
+
+    </Grid>
+</ContentPage>

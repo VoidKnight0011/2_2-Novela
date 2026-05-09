@@ -5,81 +5,38 @@ using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Views;
 using Microsoft.Maui.Controls.Shapes;
 using Novela.Resources.Pages.Extra;
+using Novela.Resources.Services;
 
 namespace Novela.Resources.Pages.Book;
 
 public partial class Novela_Dashboard : ContentPage
 {
     #region Dashboard
+        private readonly Service_Auth _auth_service;
+        private readonly Service_Book _book_service;
+        public ObservableCollection<Models.Book_Models.Book> user_books { get; set; } = new();
+
         public Novela_Dashboard()
         {
             InitializeComponent();
             Shell.SetNavBarIsVisible(this, true);
-            InitializeTestBooks();
+            _auth_service = Service_Auth.Instance;
+            _book_service = Service_Book.Instance;
+            
             BindingContext = this;
         }
-
-        public ObservableCollection<Models.Book_Models.Book> testbooks { get; set; }
-
-        private void InitializeTestBooks() {
-        testbooks = new ObservableCollection<Models.Book_Models.Book>
+        
+        protected override void OnAppearing()
         {
-            new Models.Book_Models.Book
-            {
-                book_id = 1,
-                book_title = "The Shadow Chronicles",
-                book_description = "A dark fantasy adventure",
-                Status = Status.Draft,
-                book_genres = new List<Book_Genre> { Book_Genre.Fantasy, Book_Genre.Adventure }
-            },
-            new Models.Book_Models.Book
-            {
-                book_id = 2,
-                book_title = "Echoes of Tomorrow",
-                book_description = "A science fiction thriller",
-                Status = Status.Editing,
-                book_genres = new List<Book_Genre> { Book_Genre.SciFi }
-            },
-            new Models.Book_Models.Book
-            {
-                book_id = 3,
-                book_title = "Whispers in the Dark",
-                book_description = "A mystery novel",
-                Status = Status.Draft,
-                book_genres = new List<Book_Genre> { Book_Genre.Mystery }
-            },
-            new Models.Book_Models.Book
-            {
-                book_id = 4,
-                book_title = "The Last Kingdom",
-                book_description = "An epic historical tale",
-                Status = Status.Finished,
-                book_genres = new List<Book_Genre> { Book_Genre.Historical }
-            },
-            new Models.Book_Models.Book
-            {
-                book_id = 5,
-                book_title = "Digital Dreams",
-                book_description = "A cyberpunk adventure",
-                Status = Status.Draft,
-                book_genres = new List<Book_Genre> { Book_Genre.SciFi }
-            },
-            new Models.Book_Models.Book
-            {
-                book_id = 6,
-                book_title = "Hearts Entwined",
-                book_description = "A contemporary romance",
-                Status = Status.Draft,
-                book_genres = new List<Book_Genre> { Book_Genre.Romance }
-            }
-        };
-    }
+            base.OnAppearing();
+            LoadBooks();
+        }
     #endregion
     
     #region DashboardLayer#0
-        private void to_settings (object sender, EventArgs e)
+        private async void to_settings (object sender, EventArgs e)
         {
-
+            await Shell.Current.GoToAsync("//settings");
         }
 
         private void to_about(object sender, EventArgs e)
@@ -108,16 +65,30 @@ public partial class Novela_Dashboard : ContentPage
         
         private async void to_editbook(object sender, EventArgs e)
         { 
-            await Shell.Current.GoToAsync("//overview");
+            await Shell.Current.GoToAsync("editor");
         }
     #endregion
     
     #region Dashboard#4
+
+    private void LoadBooks()
+    {
+        if (_auth_service.CurrentUser == null) return;
+        
+        var books = _book_service.get_userbooks(_auth_service.CurrentUser.user_id);
+        user_books.Clear();
+        foreach (var b in books)
+        {
+            user_books.Add(b);
+        }
+    }
+    
         private async void to_addbook(object sender, EventArgs e)
         {
             var popup = new Extra_AddBook();
             
             var result = await this.ShowPopupAsync(popup);
+            LoadBooks();    
         }
     #endregion
 }

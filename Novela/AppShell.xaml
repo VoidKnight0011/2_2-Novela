@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:auth="clr-namespace:Novela.Resources.Pages.Authentication"
     xmlns:main="clr-namespace:Novela.Resources.Pages.Book"
+    xmlns:extra="clr-namespace:Novela.Resources.Pages.Extra"
     FlyoutBehavior="Disabled">
 
     <Shell.TitleView>
@@ -23,37 +24,5 @@
         ContentTemplate="{DataTemplate main:Novela_Dashboard}"
         Route="dashboard"
     />
-        
-        <ShellContent
-            Shell.ForegroundColor="{AppThemeBinding Light=#191919, Dark=#F5F5F5}"
-            Shell.BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#191919}"
-            ContentTemplate="{DataTemplate main:Novela_Overview}"
-            Route="overview"
-        />
     
-        <ShellContent
-            Shell.ForegroundColor="{AppThemeBinding Light=#191919, Dark=#F5F5F5}"
-            Shell.BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#191919}"
-            ContentTemplate="{DataTemplate main:Novela_Characters}"
-            Route="characters"
-        />
-        
-        <ShellContent
-            Shell.ForegroundColor="{AppThemeBinding Light=#191919, Dark=#F5F5F5}"
-            Shell.BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#191919}"
-            ContentTemplate="{DataTemplate main:Novela_Timeline}"
-            Route="timeline" />
-        
-        <ShellContent
-            Shell.ForegroundColor="{AppThemeBinding Light=#191919, Dark=#F5F5F5}"
-            Shell.BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#191919}"
-            ContentTemplate="{DataTemplate main:Novela_Manuscript}"
-            Route="manuscript" />
-        
-        <ShellContent
-            Shell.ForegroundColor="{AppThemeBinding Light=#191919, Dark=#F5F5F5}"
-            Shell.BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#191919}"
-            ContentTemplate="{DataTemplate main:Novela_Appendices}"
-            Route="appendices" />
-
 </Shell>
