@@ -30,11 +30,11 @@
                     <Grid>
                         <Entry x:Name="si_psswd" IsPassword="True" Placeholder="Password" 
                                FontFamily="Poppins-Light" PlaceholderColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}"/>
-                        <ImageButton HorizontalOptions="End" Source="icon_closedeye.png" HeightRequest="10" WidthRequest="10" VerticalOptions="Center"
+                        <ImageButton HorizontalOptions="End" Source="icon_eye_closed.png" HeightRequest="27.5" WidthRequest="27.5" MinimumHeightRequest="27.5" MinimumWidthRequest="27.5" VerticalOptions="Center"
                                      Clicked="psswd_visibility" CommandParameter="{x:Reference si_psswd}" />
                     </Grid>
                     
-                    <Label x:Name="ErrorMessageA" IsVisible="False" TextColor="DarkRed" FontFamily="Poppins-Light" />
+                    <Label x:Name="ErrorMessageA" IsVisible="False" TextColor="#9B1C31" FontFamily="Poppins-Light" />
                     
                     <Button Text="Sign In" Clicked="sign_in" CornerRadius="10" Margin="0,10,0,0" BackgroundColor="#4A90D9"
                             FontFamily="Poppins-Black" TextColor="#234263"/>
@@ -62,19 +62,17 @@
                     <Grid>
                         <Entry x:Name="su_psswd1" IsPassword="True" Placeholder="Password"
                                FontFamily="Poppins-Light" PlaceholderColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}"/>
-                        <ImageButton HorizontalOptions="End" Source="icon_closedeye.png" 
-                                     HeightRequest="10" WidthRequest="10" VerticalOptions="Center"
+                        <ImageButton HorizontalOptions="End" Source="icon_eye_closed.png" HeightRequest="27.5" WidthRequest="27.5" MinimumHeightRequest="27.5" MinimumWidthRequest="27.5" VerticalOptions="Center"
                                      Clicked="psswd_visibility" CommandParameter="{x:Reference su_psswd1}" />
                     </Grid>
                     <Grid>
                         <Entry x:Name="su_psswd2" IsPassword="True" Placeholder="Confirm Password"
                                FontFamily="Poppins-Light" PlaceholderColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}"/>
-                        <ImageButton HorizontalOptions="End" Source="icon_closedeye.png" 
-                                     HeightRequest="10" WidthRequest="10" VerticalOptions="Center"
+                        <ImageButton HorizontalOptions="End" Source="icon_eye_closed.png" HeightRequest="27.5" WidthRequest="27.5" MinimumHeightRequest="27.5" MinimumWidthRequest="27.5" VerticalOptions="Center"
                                      Clicked="psswd_visibility" CommandParameter="{x:Reference su_psswd2}" />
                     </Grid>
                     
-                    <Label x:Name="ErrorMessageB" IsVisible="False" TextColor="DarkRed" FontFamily="Poppins-Light" />
+                    <Label x:Name="ErrorMessageB" IsVisible="False" TextColor="#9B1C31" FontFamily="Poppins-Light" />
                     
                     <Button Text="Sign Up" Clicked="sign_up" CornerRadius="10" Margin="0,10,0,0" BackgroundColor="#4A90D9"
                             FontFamily="Poppins-Black" TextColor="#234263"/>

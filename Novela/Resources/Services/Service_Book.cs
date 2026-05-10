@@ -18,6 +18,8 @@ public class Service_Book
         _database = Service_Database.Instance.database;
     }
     
+    public Book CurrentBook {get; set;}
+    
     #region GetBooks
         public List<Book> get_userbooks(int userId)
         {

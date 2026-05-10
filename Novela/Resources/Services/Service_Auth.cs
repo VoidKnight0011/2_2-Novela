@@ -16,7 +16,6 @@ public class Service_Auth
     private readonly SQLiteConnection  _database;
     
     public User CurrentUser { get; private set; }
-    public Book CurrentBook {get; set;}
     
     // Constructor
     private Service_Auth()

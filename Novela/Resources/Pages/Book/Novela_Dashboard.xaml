@@ -42,20 +42,22 @@
             <CollectionView.ItemTemplate>
                 
                 <DataTemplate>
-                    <Border HeightRequest="230" StrokeThickness="0" StrokeShape="RoundRectangle 10" BindingContext="{Binding .}">
+                    <Border HeightRequest="230" StrokeThickness="0" StrokeShape="RoundRectangle 10">
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="to_editbook" />
+                            <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="to_editbook"/>
                         </Border.GestureRecognizers>
                         
                         <Grid>
-                            <Image Source="grid.png" Aspect="AspectFill" />
+                            <Image Source="placeholder_image.png" Aspect="AspectFill" />
+            
                             <Grid VerticalOptions="End" Padding="8, 12" ColumnDefinitions="*, Auto"
-                                  BackgroundColor="{AppThemeBinding Light=#BFFFFFFF ,Dark=#BF000000}">
-                                <Label Grid.Column="0" Text="{Binding book_title}" VerticalOptions="Center" 
-                                       LineBreakMode="TailTruncation" MaxLines="1"
+                                  BackgroundColor="{AppThemeBinding Light=#BFFFFFFF, Dark=#BF000000}">
+                                <Label Grid.Column="0" Text="{Binding book_title}" VerticalOptions="Center" LineBreakMode="TailTruncation" MaxLines="1"
                                        FontFamily="Poppins-Light" FontSize="12" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" />
-                                <ImageButton Clicked="book_options" CommandParameter="{Binding .}" Grid.Column="1"  Source="{AppThemeBinding Light=novela_edit_light.png, Dark=novela_edit_dark.png}" HeightRequest="32" WidthRequest="32" MinimumHeightRequest="32"  MinimumWidthRequest="32" Padding="5" VerticalOptions="Center"  Aspect="AspectFit"
-                                             BackgroundColor="Transparent" />    
+                                <ImageButton Clicked="book_options" CommandParameter="{Binding .}" Grid.Column="1" ZIndex=""
+                                             Source="{AppThemeBinding Light=novela_edit_light.png, Dark=novela_edit_dark.png}" HeightRequest="32" WidthRequest="32" MinimumHeightRequest="32" MinimumWidthRequest="32"
+                                             Padding="5" VerticalOptions="Center" Aspect="AspectFit"
+                                             BackgroundColor="Transparent" />
                             </Grid>
                         </Grid>
                     </Border>

@@ -66,13 +66,14 @@ public partial class Novela_Auth : ContentPage
     #endregion
     
     #region EXTRAS
+    
         public void psswd_visibility(object? sender, EventArgs args)
         {
             var button = sender as ImageButton;
             var entry = button?.CommandParameter as Entry;
             
             entry.IsPassword = !entry.IsPassword;
-            button.Source = entry.IsPassword ? "icon_closedeye.png" : "icon_openeye.png";
+            button.Source = entry.IsPassword ? "icon_eye_closed.png" : "icon_eye_opened.png";
         }
         
         public async void continue_guest(object? sender, EventArgs args)

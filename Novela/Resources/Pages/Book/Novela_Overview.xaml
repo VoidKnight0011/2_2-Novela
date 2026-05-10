@@ -48,21 +48,21 @@
                                 <Border StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,2.5" HeightRequest="40"
                                         Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
 
-                                    <Editor Placeholder="Enter Book Title" AutoSize="TextChanges" FontSize="8" x:Name="book_title"
+                                    <Editor Placeholder="Enter Book Title" FontSize="8" x:Name="book_title"
                                             FontFamily="Poppins-Light" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
                                 </Border>
                             </VerticalStackLayout>
 
-                            <!-- Info: Synopsis -->
+                            <!-- Info: Descriptiom -->
                             <VerticalStackLayout Grid.Row="1" Spacing="-2.5" HorizontalOptions="Fill">
 
-                                <Label Text="Synopsis" FontSize="12"
+                                <Label Text="Description" FontSize="12"
                                        FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"/>
 
                                 <Border StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,6"
                                         BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
 
-                                    <Editor Placeholder="Enter Book Description..." FontSize="8" AutoSize="TextChanges"
+                                    <Editor Placeholder="Enter Book Description..." FontSize="8" x:Name="book_description" VerticalOptions="Fill"
                                             FontFamily="Poppins-Light" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
                                 </Border>
                             </VerticalStackLayout>

@@ -12,11 +12,13 @@
         <ToolbarItem Text="Logout" Order="Secondary" Priority="2" Clicked="to_logout" />
     </ContentPage.ToolbarItems>
     
-    <Grid>
-        <extra:Book_Sidebar ZIndex="2" x:Name="Sidebar" HorizontalOptions="Start" 
-                            VerticalOptions="Fill" SafeAreaEdges="None"/>
+    <Grid RowDefinitions="Auto, *">
+        <extra:Book_Header Grid.Row="0" />
         
-        <ContentView x:Name="Editor_ContentArea" Margin="60, 0, 0, 0" />
-    </Grid>    
+        <ContentView Grid.Row="1" x:Name="Editor_ContentArea" Margin="60, 0, 0, 0" />
+        
+        <extra:Book_Sidebar x:Name="Sidebar" Grid.RowSpan="2" ZIndex="10"
+                            HorizontalOptions="Start" VerticalOptions="Fill" />
+    </Grid>
     
 </ContentPage>

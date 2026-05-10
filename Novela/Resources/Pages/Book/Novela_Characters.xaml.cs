@@ -10,12 +10,12 @@ public partial class Novela_Characters : ContentView
     private readonly Service_Auth _auth_service;
     private Novela.Resources.Models.Book_Models.Book _currentBook;
     
-    public Novela_Characters(Novela.Resources.Models.Book_Models.Book book)
+    public Novela_Characters()
     {
         InitializeComponent();
         _book_service = Service_Book.Instance;
         _auth_service = Service_Auth.Instance;
-        _currentBook = book;
+        _currentBook = _book_service.CurrentBook;
         
         BindingContext = this;
         // LoadBook();

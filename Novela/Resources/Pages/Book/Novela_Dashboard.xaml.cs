@@ -56,15 +56,18 @@ public partial class Novela_Dashboard : ContentPage
         LoadBooks();
     }
     
-    private async void to_editbook(object sender, EventArgs e)
+    private async void to_editbook(object sender, TappedEventArgs e)
     {
-        var gesture = sender as TapGestureRecognizer;
-        var border = gesture?.Parent as Border;
-        var book = border?.BindingContext as Novela.Resources.Models.Book_Models.Book;
+        var book = (sender as BindableObject)?.BindingContext
+            as Novela.Resources.Models.Book_Models.Book;
 
-        if (book == null) return;
+        if (book == null)
+        {
+            await DisplayAlert("Error", "Book is null", "OK");
+            return;
+        }
 
-        _auth_service.CurrentBook = book;
+        _book_service.CurrentBook = book;
         await Shell.Current.GoToAsync("editor");
     }
     #endregion

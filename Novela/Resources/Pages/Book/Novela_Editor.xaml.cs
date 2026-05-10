@@ -10,16 +10,10 @@ namespace Novela.Resources.Pages.Book;
 
 public partial class Novela_Editor : ContentPage
 {
-    private readonly Service_Auth _auth_service;
-    private readonly Service_Book _book_service;
-    private Novela.Resources.Models.Book_Models.Book _currentBook;
     
     public Novela_Editor()
     {
         InitializeComponent();
-        _book_service = Service_Book.Instance;
-        _auth_service = Service_Auth.Instance;
-        _currentBook = _auth_service.CurrentBook;
         
         Sidebar.section_toggle += on_togglesection;
         
@@ -54,12 +48,12 @@ public partial class Novela_Editor : ContentPage
     {
         Editor_ContentArea.Content = section switch
         {
-            "overview"   => new Novela_Overview(_currentBook),
-            "characters" => new Novela_Characters(_currentBook),
-            "timeline"   => new Novela_Timeline(_currentBook),
-            "manuscript" => new Novela_Manuscript(_currentBook),
-            "appendices" => new Novela_Appendices(_currentBook),
-            _            => new Novela_Overview(_currentBook)
+            "overview"   => new Novela_Overview(),
+            "characters" => new Novela_Characters(),
+            "timeline"   => new Novela_Timeline(),
+            "manuscript" => new Novela_Manuscript(),
+            "appendices" => new Novela_Appendices(),
+            _            => new Novela_Overview()
         };
         
         Sidebar.set_activeitem(section);

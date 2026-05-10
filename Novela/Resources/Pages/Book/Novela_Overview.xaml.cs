@@ -11,20 +11,21 @@ public partial class Novela_Overview : ContentView
     private Novela.Resources.Models.Book_Models.Book _currentBook;
     private byte[]? _selectedCoverData;
     
-    public Novela_Overview(Novela.Resources.Models.Book_Models.Book book)
+    public Novela_Overview()
     {
         InitializeComponent();
         _book_service = Service_Book.Instance;
         _auth_service = Service_Auth.Instance;
-        _currentBook = book;
+        _currentBook = _book_service.CurrentBook;
         
         BindingContext = this;
-        LoadBook();
+        Loaded += OnLoaded;
     }
 
-    public void LoadBook()
+    public void OnLoaded(object sender, EventArgs eventArgs)
     {
-        
+        book_title.Text = _currentBook.book_title;
+        book_description.Text = _currentBook.book_description;
     }
 
     public Book_Genre[] GenreOptions { get; } = Enum.GetValues<Book_Genre>();

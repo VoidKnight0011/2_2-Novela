@@ -14,12 +14,12 @@ public partial class Novela_Manuscript : ContentView
     private readonly Service_Auth _auth_service;
     private Novela.Resources.Models.Book_Models.Book _currentBook;
     
-    public Novela_Manuscript(Novela.Resources.Models.Book_Models.Book book)
+    public Novela_Manuscript()
     {
         InitializeComponent();
         _book_service = Service_Book.Instance;
         _auth_service = Service_Auth.Instance;
-        _currentBook = book;
+        _currentBook = _book_service.CurrentBook;
         
         BindingContext = this;
         // LoadBook();
