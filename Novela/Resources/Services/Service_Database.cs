@@ -20,14 +20,14 @@ public class Service_Database
         _database = new SQLiteConnection(dbPath);
         
         // if they dont exist
-        // InitializeTables();
+        InitializeTables();
     }
     
-        // private void InitializeTables()
-        // {
-        //     // Create tables from your models
-        //     _database.CreateTable<User>();
-        //     _database.CreateTable<Book>();
+        private void InitializeTables()
+        {
+            // Create tables from your models
+            _database.CreateTable<User>();
+            _database.CreateTable<Book>();
         //     _database.CreateTable<Book_Character>();
         //     _database.CreateTable<Book_CharacterRelationship>();
         //     _database.CreateTable<Book_Section>();
@@ -36,7 +36,7 @@ public class Service_Database
         //     _database.CreateTable<Book_Event>();
         //     _database.CreateTable<Book_AppendixCategory>();
         //     _database.CreateTable<Book_AppendixItem>();
-        // }
+        }
     
     
     

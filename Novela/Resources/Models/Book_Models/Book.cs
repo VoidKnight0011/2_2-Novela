@@ -26,6 +26,10 @@ public class Book
     [Ignore]
     public List<string> book_themes { get; set; } = new();
     public string book_themes_json { get; set; }
+
+    [Ignore]
+    public ImageSource book_cover => book_cover_data != null ? ImageSource.FromStream(() => new MemoryStream(book_cover_data)) : "placeholder_image.png";
+    public byte[]? book_cover_data { get; set; }
     
     [Ignore]
     public List<Book_Character> book_characters { get; set; } = new();

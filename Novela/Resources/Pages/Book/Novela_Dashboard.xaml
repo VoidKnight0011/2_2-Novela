@@ -34,7 +34,7 @@
                FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
 
         <!-- LAYER #3 — Book Grid -->
-        <CollectionView Grid.Row="2" Margin="10, 0, 10, 10" ItemsSource="{Binding user_books }">
+        <CollectionView Grid.Row="2" Margin="10, 0, 10, 10" ItemsSource="{Binding the_displayedbooks }" EmptyView="You have no Books to Display! Create one now!">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2" VerticalItemSpacing="8" HorizontalItemSpacing="6" />
             </CollectionView.ItemsLayout>
@@ -42,7 +42,7 @@
             <CollectionView.ItemTemplate>
                 
                 <DataTemplate>
-                    <Border HeightRequest="230" StrokeThickness="0" StrokeShape="RoundRectangle 10">
+                    <Border HeightRequest="230" StrokeThickness="0" StrokeShape="RoundRectangle 10" BindingContext="{Binding .}">
                         <Border.GestureRecognizers>
                             <TapGestureRecognizer Tapped="to_editbook" />
                         </Border.GestureRecognizers>

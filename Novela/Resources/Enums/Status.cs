@@ -2,5 +2,7 @@
 
 public enum Status
 {
-    Draft, Editing, Finished
+    Draft, 
+    Editing, 
+    Finished
 }

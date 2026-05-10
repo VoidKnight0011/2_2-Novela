@@ -3,6 +3,8 @@ using System.Security.Cryptography;
 using Android.Bluetooth;
 using SQLite;
 using Novela.Resources.Enums;
+using Novela.Resources.Services;
+using Novela.Resources.Models.Book_Models;
 
 namespace Novela.Resources.Services;
 
@@ -14,7 +16,7 @@ public class Service_Auth
     private readonly SQLiteConnection  _database;
     
     public User CurrentUser { get; private set; }
-    // public bool IsAuthenticated => CurrentUser != null;
+    public Book CurrentBook {get; set;}
     
     // Constructor
     private Service_Auth()

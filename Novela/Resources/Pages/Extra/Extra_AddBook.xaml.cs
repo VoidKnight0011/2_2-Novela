@@ -16,6 +16,8 @@ public partial class Extra_AddBook : Popup
     public Extra_AddBook()
     {
         InitializeComponent();
+        _auth_service = Service_Auth.Instance;
+        _book_service = Service_Book.Instance;
     }
 
     public void popup_close(object sender, EventArgs args)
@@ -25,6 +27,12 @@ public partial class Extra_AddBook : Popup
 
     public void to_addbook(object sender, EventArgs args)
     {
+        if (string.IsNullOrWhiteSpace(book_title.Text))
+        {
+            // Could add validation feedback here
+            return;
+        }
+        
         var new_book = new Models.Book_Models.Book()
         {
             user_id = _auth_service.CurrentUser.user_id,

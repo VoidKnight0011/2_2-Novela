@@ -17,7 +17,23 @@
 
                         <!-- COLUMN#1: Book Image -->
                         <Border Grid.Column="0" StrokeThickness="0" StrokeShape="RoundRectangle 5" HeightRequest="200">
-                            <Image Source="placeholder_image.png" Aspect="AspectFill" />
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="on_editcover" />
+                            </Border.GestureRecognizers>
+                            
+                            <Grid>
+                                <Image Source="placeholder_image.png" Aspect="AspectFill" />
+                                <Border StrokeThickness="0" HorizontalOptions="Fill" VerticalOptions="Fill">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0 " EndPoint="0, 1">
+                                            <GradientStop Color="#00000000" Offset="0.0" />
+                                            <GradientStop Color="#66000000" Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    
+                                    <Label Text="📷 Tap to Edit Cover" FontSize="Micro" FontFamily="Poppins-Regular" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
                         </Border>
 
                         <!-- COLUMN#2: Book Information -->
@@ -32,7 +48,7 @@
                                 <Border StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,2.5" HeightRequest="40"
                                         Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
 
-                                    <Editor Placeholder="Enter Book Title" AutoSize="TextChanges" FontSize="8"
+                                    <Editor Placeholder="Enter Book Title" AutoSize="TextChanges" FontSize="8" x:Name="book_title"
                                             FontFamily="Poppins-Light" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
                                 </Border>
                             </VerticalStackLayout>

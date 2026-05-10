@@ -5,12 +5,20 @@ namespace Novela.Resources.Pages.Book;
 
 public partial class Novela_Characters : ContentView
 {
+    private readonly Service_SidebarState _sidebarState;
+    private readonly Service_Book _book_service;
+    private readonly Service_Auth _auth_service;
+    private Novela.Resources.Models.Book_Models.Book _currentBook;
     
-
-    public Novela_Characters()
+    public Novela_Characters(Novela.Resources.Models.Book_Models.Book book)
     {
         InitializeComponent();
+        _book_service = Service_Book.Instance;
+        _auth_service = Service_Auth.Instance;
+        _currentBook = book;
+        
         BindingContext = this;
+        // LoadBook();
     }
     
     #region DashboardLayer#0
