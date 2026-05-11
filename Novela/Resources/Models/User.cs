@@ -20,4 +20,5 @@ public class User
     public List<Book> user_books { get; set; } = new();
     
     public User_Theme user_theme { get; set; } = User_Theme.Dark;
+    public bool user_dashboard_orientation { get; set; } = true;
 }

@@ -90,6 +90,14 @@
         <DependentUpon>MainPage.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Resources\Pages\Extra\Extra_Filter.xaml.cs">
+        <DependentUpon>Extra_AddBook.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Resources\Pages\Extra\Extra_Filter.xaml" />
     </ItemGroup>
 
 </Project>

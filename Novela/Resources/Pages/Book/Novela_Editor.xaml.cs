@@ -16,6 +16,7 @@ public partial class Novela_Editor : ContentPage
         InitializeComponent();
         
         Sidebar.section_toggle += on_togglesection;
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
         
         current_section("overview");
     }

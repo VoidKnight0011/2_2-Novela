@@ -19,6 +19,8 @@ public partial class Extra_EditBook : Popup
     public Extra_EditBook(Novela.Resources.Models.Book_Models.Book book)
     {
         InitializeComponent();
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
+        
         _auth_service = Service_Auth.Instance;
         _book_service = Service_Book.Instance;
         _currentbook = book;

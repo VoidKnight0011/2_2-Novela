@@ -11,6 +11,8 @@ public partial class Novela_Dashboard : ContentPage
 {
     private readonly Service_Auth _auth_service;
     private readonly Service_Book _book_service;
+    
+    private byte[]? _selectedCoverData;
     private ObservableCollection<Novela.Resources.Models.Book_Models.Book> _user_books { get; set; } = new();
 
     public Novela_Dashboard()
@@ -43,6 +45,28 @@ public partial class Novela_Dashboard : ContentPage
     }
     #endregion
 
+    #region  Filter
+
+    public void toggle_grid(object sender, EventArgs e)
+    {
+        _auth_service.CurrentUser.user_dashboard_orientation = !_auth_service.CurrentUser.user_dashboard_orientation;
+
+        if(_auth_service.CurrentUser.user_dashboard_orientation)
+        {
+            books_collection_list.IsVisible = false;
+            books_collection_grid.IsVisible = true;
+        }
+        else
+        {
+            books_collection_grid.IsVisible = false;
+            books_collection_list.IsVisible = true;
+        }
+        
+        grid_toggle.Source = _auth_service.CurrentUser.user_dashboard_orientation ? "icon_grid.png" : "icon_list.png";
+    }
+
+    #endregion
+
     #region Book_Card
     private async void book_options(object sender, EventArgs e)
     {
@@ -59,7 +83,7 @@ public partial class Novela_Dashboard : ContentPage
     private async void to_editbook(object sender, TappedEventArgs e)
     {
         var book = (sender as BindableObject)?.BindingContext
-            as Novela.Resources.Models.Book_Models.Book;
+         as Novela.Resources.Models.Book_Models.Book;
 
         if (book == null)
         {

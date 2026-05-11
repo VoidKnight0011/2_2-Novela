@@ -3,17 +3,19 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Novela.Resources.Pages.Extra.Book_Header"
-             HorizontalOptions="Fill" Padding="10" ZIndex="0">
+             HorizontalOptions="Fill" Padding="10" ZIndex="0"
+             BackgroundColor="{AppThemeBinding Light=#a3a3a3, Dark=#212121t}">
     
-    <ContentView.Background>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="{AppThemeBinding Light=#F5F5F5, Dark=#191919}" Offset="0.0" />
-            <GradientStop Color="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}" Offset="1.0" />
-        </LinearGradientBrush>
-    </ContentView.Background>
-    
-    <Grid>
-        <Label Text="Book Title" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" x:Name="book_title" FontFamily="Poppins-Black" FontSize="12" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+    <Grid HorizontalOptions="Fill" Padding="10" ZIndex="0"
+          BackgroundColor="{AppThemeBinding Light=#a3a3a3, Dark=#212121t}">
+        <Label IsVisible="True" x:Name="book_title_label" Text="{Binding _currentBook.book_title}" VerticalOptions="Center" HorizontalTextAlignment="Center"
+               TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" FontFamily="Poppins-Black" FontSize="12">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="edit_title" />
+            </Label.GestureRecognizers>
+        </Label>    
+        <Entry IsVisible="False" x:Name="book_title_entry" Text="{Binding _currentBook.book_title}" VerticalOptions="Center" HorizontalTextAlignment="Center" Unfocused="book_entry_unfocused"
+               TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" FontFamily="Poppins-Black" FontSize="12" />
         <ImageButton Source="icon_eye_opened.png" HeightRequest="25" WidthRequest="25" MinimumHeightRequest="25" MinimumWidthRequest="25" VerticalOptions="Center" HorizontalOptions="End" />
     </Grid>
     
