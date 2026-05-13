@@ -9,16 +9,22 @@
                 
                 <!-- Row#2: Book Details -->
                 <Grid RowDefinitions="*, Auto">
-                    <Grid Grid.Row="0" ColumnDefinitions="*,*" ColumnSpacing="12">
+                    <Grid Grid.Row="0" ColumnDefinitions="*,*" VerticalOptions="Start" ColumnSpacing="12">
 
                         <!-- COLUMN#1: Book Image -->
                         <Border Grid.Column="0" StrokeThickness="0" StrokeShape="RoundRectangle 5" HeightRequest="200">
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="on_editcover" />
                             </Border.GestureRecognizers>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0 " EndPoint="0, 1">
+                                    <GradientStop Color="#00000000" Offset="0.0" />
+                                    <GradientStop Color="#66000000" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
                             
                             <Grid>
-                                <Image Source="placeholder_image.png" x:Name="book_cover" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" />
+                                <Image Source="{Binding CurrentBook.book_cover}" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" />
 
                                 <Grid BackgroundColor="#66000000">
                                     <Label Text="📷 Tap to Edit Cover" HorizontalOptions="Center" VerticalOptions="Center" 
@@ -28,41 +34,30 @@
                         </Border>
 
                         <!-- COLUMN#2: Book Information -->
-                        <Grid Grid.Column="1" RowDefinitions="Auto,*,Auto" RowSpacing="7.5">
-
-                        <!-- COLUMN#2-ROW#1: Content -->
-                            <VerticalStackLayout Grid.Row="0" Spacing="-2.5">
-
-                                <Border StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,2.5" HeightRequest="40"
-                                        Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
-
-                                    <Editor Placeholder="Enter Book Title" FontSize="8" x:Name="book_title"
-                                            FontFamily="Poppins-Light" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
-                                </Border>
-                            </VerticalStackLayout>
-
+                        <Grid Grid.Column="1" RowDefinitions="*,Auto" RowSpacing="7.5">
+                            
                             <!-- Info: Description -->
-                            <VerticalStackLayout Grid.Row="1" Spacing="-2.5" HorizontalOptions="Fill">
+                            <Grid Grid.RowDefinitions="Auto, *" Grid.Row="0" HorizontalOptions="Fill">
 
-                                <Label Text="Description" FontSize="12"
+                                <Label Grid.Row="0" x:Name="book_description" Text="Description" FontSize="12"
                                        FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"/>
 
-                                <Border StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,6"
+                                <Border Grid.Row="1" StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,6" VerticalOptions="Fill"
                                         BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
 
-                                    <Editor Placeholder="Enter Book Description..." FontSize="8" x:Name="book_description" VerticalOptions="Fill"
+                                    <Editor Placeholder="Enter Book Description..." FontSize="8" Text="{Binding CurrentBook.book_description, Mode=TwoWay}" VerticalOptions="Fill" AutoSize="Disabled"
                                             FontFamily="Poppins-Light" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
                                 </Border>
-                            </VerticalStackLayout>
+                            </Grid>
                             
                             <!-- Info: Status -->
-                            <Grid Grid.Row="2" HeightRequest="30" ColumnDefinitions="*,*">
+                            <Grid Grid.Row="1" HeightRequest="30" ColumnDefinitions="*,*">
                                 <Label Grid.Column="0" Text="Status" FontSize="12" VerticalOptions="Center" HorizontalOptions="Start"
                                        FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"/>
 
-                                <Border Grid.Column="1" Padding="6,0" StrokeThickness="2.5" StrokeShape="RoundRectangle 8" VerticalOptions="Center" HorizontalOptions="Start"
+                                <Border Grid.Column="1" Padding="6,0" StrokeThickness="1.5" StrokeShape="RoundRectangle 8" VerticalOptions="Center" HeightRequest="37.5" WidthRequest="65"
                                         BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
-                                    <Picker Title="Status" ItemsSource="{Binding StatusOptions}" SelectedItem="{Binding DefaultStatus}" HorizontalOptions="End" VerticalOptions="Center"
+                                    <Picker x:Name="book_status" Margin="0" Title="Status" ItemsSource="{Binding status_options}" SelectedItem="{Binding CurrentBook.book_status, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center"
                                             FontFamily="Poppins-Regular" FontSize="10" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
                                 </Border>
                             </Grid>

@@ -13,9 +13,10 @@
     </ContentPage.ToolbarItems>
     
     <Grid RowDefinitions="Auto, *">
-        <extra:Book_Header Grid.Row="0" />
         
-        <ContentView Grid.Row="1" x:Name="Editor_ContentArea" Margin="60, 0, 0, 0" />
+        <extra:Book_Header x:Name="Novela_Header" Grid.Row="0" />
+        
+        <ContentView Grid.Row="1" x:Name="Novela_Editor_ContentArea" Margin="60, 0, 0, 0" />
         
         <extra:Book_Sidebar x:Name="Sidebar" Grid.RowSpan="2" ZIndex="10" WidthRequest="150"
                             HorizontalOptions="Start" VerticalOptions="Fill" />

@@ -7,6 +7,7 @@ using CommunityToolkit.Maui.Views;
 using SQLite;
 using Novela.Resources.Services;
 using Novela.Resources.Models.Book_Models;
+using Novela.Resources.Helpers;
 
 namespace Novela.Resources.Pages.Extra;
 
@@ -14,7 +15,8 @@ public partial class Extra_EditBook : Popup
 {
     private readonly Service_Auth _auth_service;
     private readonly Service_Book _book_service;
-    private readonly Novela.Resources.Models.Book_Models.Book _currentbook;
+    public readonly Novela.Resources.Models.Book_Models.Book CurrentBook;
+    private string _pathCover;
     
     public Extra_EditBook(Novela.Resources.Models.Book_Models.Book book)
     {
@@ -23,27 +25,24 @@ public partial class Extra_EditBook : Popup
         
         _auth_service = Service_Auth.Instance;
         _book_service = Service_Book.Instance;
-        _currentbook = book;
+        CurrentBook = book;
+        _pathCover = CurrentBook.book_cover_path;
         
-        LoadBook();
+        BindingContext = CurrentBook;
     }
-
-    private void LoadBook()
+    
+    private async void on_editcover(object sender, EventArgs e)
     {
-        book_title.Text = _currentbook.book_title;
-        book_description.Text = _currentbook.book_description;
-        
-        // if (_currentbook.book_cover_data != null)
-        // {
-        //     _selectedCoverData = _currentBook.book_cover_data;
-        //     CoverPreview.Source = _currentBook.CoverImage;
-        // }
-    }
+        FileResult result = await FilePicker.Default.PickAsync(new PickOptions
+        {
+            PickerTitle = "Select Cover Image",
+            FileTypes = FilePickerFileType.Images
+        });
 
-
-    public async void on_editcover(object sender, EventArgs args)
-    {
+        if (result == null) return;
         
+        _pathCover = await Helper_Image.image_coversave(result, CurrentBook.book_id, _pathCover);
+        CurrentBook.book_cover_path = _pathCover;
     }
     
     public void popup_close(object sender, EventArgs args)
@@ -53,9 +52,11 @@ public partial class Extra_EditBook : Popup
 
     public void popup_save(object sender, EventArgs args)
     {
-        _currentbook.book_title = book_title.Text;
-        _currentbook.book_description = book_description.Text;
-        _book_service.update_book(_currentbook);
+        CurrentBook.book_title = book_title.Text;
+        CurrentBook.book_description = book_description.Text;
+        if(CurrentBook.book_cover_path != _pathCover) CurrentBook.book_cover_path = _pathCover;
+        _book_service.update_book(CurrentBook);
         Close();
     }
+    
 }

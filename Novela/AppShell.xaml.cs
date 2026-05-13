@@ -8,5 +8,7 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
         Routing.RegisterRoute("editor", typeof(Novela_Editor));
+        Routing.RegisterRoute("preview", typeof(Novela_Preview));
+        Routing.RegisterRoute("charprofile", typeof(Novela_CharacterProfile));
     }
 }

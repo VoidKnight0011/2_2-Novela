@@ -29,9 +29,10 @@
                             PressedScale="0.97"
                             DefaultAnimationDuration="80"/>
                     </Border.Behaviors>
-                    <HorizontalStackLayout Spacing="8">
-                        <Image Source="sidebar_return.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
-                        <Label Text="Return" FontSize="10.5" VerticalOptions="Center"
+                    
+                    <HorizontalStackLayout>
+                        <Image Source="sidebar_return.png" WidthRequest="22.5" HeightRequest="22.5" Margin="2.5" />
+                        <Label Text="Return" FontSize="10.5" VerticalOptions="Center" Margin="2.5"
                                TextColor="#4A90D9" FontFamily="Poppins-Black" />
                     </HorizontalStackLayout>
                 </Border>

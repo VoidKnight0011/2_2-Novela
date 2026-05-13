@@ -3,20 +3,25 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Novela.Resources.Pages.Extra.Book_Header"
-             HorizontalOptions="Fill" Padding="10" ZIndex="0"
-             BackgroundColor="{AppThemeBinding Light=#a3a3a3, Dark=#212121t}">
+             HorizontalOptions="Fill" ZIndex="0"
+             BackgroundColor="{AppThemeBinding Light=#a3a3a3, Dark=#222222}">
     
     <Grid HorizontalOptions="Fill" Padding="10" ZIndex="0"
           BackgroundColor="{AppThemeBinding Light=#a3a3a3, Dark=#212121t}">
+        
         <Label IsVisible="True" x:Name="book_title_label" Text="{Binding current_book.book_title}" VerticalOptions="Center" HorizontalTextAlignment="Center"
                TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" FontFamily="Poppins-Black" FontSize="12">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="edit_title" />
             </Label.GestureRecognizers>
         </Label>    
-        <Entry IsVisible="False" x:Name="book_title_entry" Text="{Binding current_book.book_title}" VerticalOptions="Center" HorizontalTextAlignment="Center" Unfocused="book_entry_unfocused"
-               TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" FontFamily="Poppins-Black" FontSize="12" />
-        <ImageButton Source="icon_eye_opened.png" HeightRequest="25" WidthRequest="25" MinimumHeightRequest="25" MinimumWidthRequest="25" VerticalOptions="Center" HorizontalOptions="End" />
+            <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" IsVisible="False" x:Name="book_title_entryspace" Padding="0, -15" Margin="0, -15">
+                <Entry x:Name="book_title_entry" Text="{Binding current_book.book_title}" VerticalOptions="Center" HorizontalTextAlignment="Center" Unfocused="on_unfocus" Margin="5"
+                       TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" FontFamily="Poppins-Black" FontSize="12" />
+                <ImageButton Source="icon_add.png" CornerRadius="10" Padding="5" HeightRequest="20" WidthRequest="20" MinimumHeightRequest="20" MinimumWidthRequest="20" Clicked="on_save"
+                             BackgroundColor="#4A90D9"/>
+            </HorizontalStackLayout>        
+        <ImageButton Source="icon_eye_opened.png" Clicked="to_preview" HeightRequest="25" WidthRequest="25" MinimumHeightRequest="25" MinimumWidthRequest="25" VerticalOptions="Center" HorizontalOptions="End" />
     </Grid>
     
 </ContentView>

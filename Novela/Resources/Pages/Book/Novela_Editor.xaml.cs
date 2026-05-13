@@ -29,13 +29,14 @@ public partial class Novela_Editor : ContentPage
     #endregion
     
     #region DashboardLayer#1
+    
         public void on_togglesection(object sender, string section)
         {
             current_section(section);
         }
         private void current_section (string section)
         {
-            Editor_ContentArea.Content = section switch
+            Novela_Editor_ContentArea.Content = section switch
             {
                 "overview"   => new Novela_Overview(),
                 "characters" => new Novela_Characters(),
@@ -48,4 +49,6 @@ public partial class Novela_Editor : ContentPage
             Sidebar.set_activeitem(section);
         }
     #endregion
+    
+    
 }

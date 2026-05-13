@@ -32,18 +32,18 @@ public partial class Novela_Dashboard : ContentPage
     }
 
     #region Header_Options
-    private async void to_settings(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("//settings");
-    }
+        private async void to_settings(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//settings");
+        }
 
-    private void to_about(object sender, EventArgs e) { }
+        private void to_about(object sender, EventArgs e) { }
 
-    private async void to_logout(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("//auth");
-    }
-    #endregion
+        private async void to_logout(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//auth");
+        }
+        #endregion
 
     #region  Filter
 
@@ -68,33 +68,33 @@ public partial class Novela_Dashboard : ContentPage
     #endregion
 
     #region Book_Card
-    private async void book_options(object sender, EventArgs e)
-    {
-        var button = sender as ImageButton;
-        var book = button?.CommandParameter as Novela.Resources.Models.Book_Models.Book;
-
-        if (book == null) return;
-        
-        var popup = new Extra_EditBook(book);
-        await this.ShowPopupAsync(popup);
-        LoadBooks();
-    }
-    
-    private async void to_editbook(object sender, TappedEventArgs e)
-    {
-        var book = (sender as BindableObject)?.BindingContext
-         as Novela.Resources.Models.Book_Models.Book;
-
-        if (book == null)
+        private async void book_options(object sender, EventArgs e)
         {
-            await DisplayAlert("Error", "Book is null", "OK");
-            return;
-        }
+            var button = sender as ImageButton;
+            var book = button?.CommandParameter as Novela.Resources.Models.Book_Models.Book;
 
-        _book_service.CurrentBook = book;
-        await Shell.Current.GoToAsync("editor");
-    }
-    #endregion
+            if (book == null) return;
+            
+            var popup = new Extra_EditBook(book);
+            await this.ShowPopupAsync(popup);
+            LoadBooks();
+        }
+        
+        private async void to_editbook(object sender, TappedEventArgs e)
+        {
+            var book = (sender as BindableObject)?.BindingContext
+             as Novela.Resources.Models.Book_Models.Book;
+
+            if (book == null)
+            {
+                await DisplayAlert("Error", "Book is null", "OK");
+                return;
+            }
+
+            _book_service.CurrentBook = book;
+            await Shell.Current.GoToAsync("editor");
+        }
+        #endregion
     
     #region Book_Library
     private void LoadBooks()

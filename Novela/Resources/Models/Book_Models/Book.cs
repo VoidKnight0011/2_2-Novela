@@ -1,10 +1,11 @@
-﻿using Novela.Resources.Enums;
+﻿using System.ComponentModel;
+using Novela.Resources.Enums;
 using SQLite;
 
 namespace Novela.Resources.Models.Book_Models;
 
 [Table("Novela_User_Books")]
-public class Book
+public class Book : INotifyPropertyChanged
 {
     [PrimaryKey, AutoIncrement]
     public int book_id { get; set; }
@@ -17,7 +18,7 @@ public class Book
     [MaxLength(2000)]
     public string? book_description { get; set; }
     
-    public Status book_status { get; set; } = Status.Draft;
+    public Status? book_status { get; set; }
     
     [Ignore]
     public List<Book_Genre> book_genres { get; set; } = new();
@@ -37,7 +38,18 @@ public class Book
         }
     }
 
-    public string book_cover_path { get; set; }
+    private string _book_cover_path;
+    public string book_cover_path
+    {
+        get => _book_cover_path;
+        set
+        {
+            if(book_cover_path == value) return;
+            _book_cover_path = value;
+
+            OnPropertyChanged(nameof(book_cover));
+        }
+    }
     
     [Ignore]
     public List<Book_Character> book_characters { get; set; } = new();
@@ -50,4 +62,14 @@ public class Book
     
     // [Ignore]
     // public Book_Appendix book_appendices { get; set; } = new();
+    
+    #region Helper
+        public event PropertyChangedEventHandler? PropertyChanged;
+        
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+        
+    #endregion    
 }

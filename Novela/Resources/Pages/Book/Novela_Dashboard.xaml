@@ -15,14 +15,14 @@
           BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}">
 
         <!-- LAYER #1 — Filter / Search / Toggle -->
-        <Grid Grid.Row="0" ColumnDefinitions="Auto, *, Auto" ColumnSpacing="-2.5" Padding="16, 5">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto, *, Auto" Padding="16, 8">
 
-            <Border Grid.Column="0" Padding="6, 0" HeightRequest="38" WidthRequest="78" StrokeThickness="2.5" StrokeShape="RoundRectangle 8"
-                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
+            <Border Grid.Column="0" Padding="10, 2.5" HorizontalOptions="Fill" StrokeThickness="2.5" StrokeShape="RoundRectangle 8" HeightRequest="40"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}">
                     <HorizontalStackLayout>
-                        <Image Source="icon_settings.png" HeightRequest="15" Width="15" Margin="10" />
-                        <Label Text="Filter" Margin="5"
-                               FontFamily="Poppins-Regular" FontSize="10" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"/>
+                        <Image Source="icon_settings.png" HeightRequest="17.5" Width="17.5" Margin="2.5" VerticalOptions="Center" />
+                        <Label Text="Filter" Margin="2.5" VerticalOptions="Center"
+                               FontFamily="Poppins-Black" FontSize="12" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"/>
                     </HorizontalStackLayout>   
             </Border>
             
@@ -52,7 +52,15 @@
                         
                         <Grid>
                             <Image x:Name="books_collection_image" Source="{Binding book_cover, FallbackValue='placeholder_image.png'}" Aspect="AspectFill" />
-            
+                            <BoxView>
+                                <BoxView.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#00000000" Offset="0.0"/>
+                                        <GradientStop Color="#99000000" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </BoxView.Background>
+                            </BoxView>
+                            
                             <Grid VerticalOptions="End" Padding="8, 12" ColumnDefinitions="*, Auto"
                                   BackgroundColor="{AppThemeBinding Light=#BFFFFFFF, Dark=#BF000000}">
                                 <Label Grid.Column="0" Text="{Binding book_title}" VerticalOptions="Center" LineBreakMode="TailTruncation" MaxLines="1"
@@ -83,7 +91,7 @@
                         </Border.GestureRecognizers>
                         
                         <Grid>
-                            <Image x:Name="books_collection_image" VerticalOptions="Fill" HorizontalOptions="Fill" Source="{Binding book_cover, FallbackValue='placeholder_image.png'}" Aspect="AspectFill" Opacity="0.6" />
+                            <Image VerticalOptions="Fill" HorizontalOptions="Fill" Source="{Binding book_cover}" Aspect="AspectFill" Opacity="0.6" />
                             
                             <Label Margin="15, 0" Grid.Column="1" Text="{Binding book_title}" VerticalOptions="Center" LineBreakMode="TailTruncation" MaxLines="1" HorizontalOptions="Start"
                                    FontFamily="Poppins-Light" FontSize="12" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" />
@@ -100,13 +108,13 @@
         </CollectionView>
 
         <!-- LAYER #4 — FAB -->
-        <Border StrokeThickness="2.5" Grid.Row="2" HorizontalOptions="End" VerticalOptions="End" Margin="16, 20" StrokeShape="RoundRectangle 10" Padding="1.5"
+        <Border StrokeThickness="3" Grid.Row="2" HorizontalOptions="End" VerticalOptions="End" Margin="16, 20" StrokeShape="RoundRectangle 10" Padding="2.5"
                 BackgroundColor="#4A90D9" Stroke="#234263">
             <Border.GestureRecognizers>
                 <TapGestureRecognizer Tapped="to_addbook" />
             </Border.GestureRecognizers>
             <Border.Behaviors>
-                <toolkit:TouchBehavior PressedScale="0.97" DefaultAnimationDuration="80"/>
+                <toolkit:TouchBehavior PressedScale="0.90" DefaultAnimationDuration="80"/>
             </Border.Behaviors>
 
             <HorizontalStackLayout Spacing="5" Padding="12, 8">

@@ -77,10 +77,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Resources\Controllers\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <MauiXaml Update="Resources\Pages\Book\Novela_Dashboard.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>

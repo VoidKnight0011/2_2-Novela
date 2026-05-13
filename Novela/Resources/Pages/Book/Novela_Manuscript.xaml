@@ -1,34 +1,206 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:Novela.Resources.Pages.Extra"
              x:Class="Novela.Resources.Pages.Book.Novela_Manuscript"
-             Padding="0">
-    
-        <ScrollView>
-               
-        <!-- COLUMN#2: Content -->
-        <Grid RowDefinitions="auto, *, auto">
-            <Label Text="Manuscript" />
-            <!-- Collection View -->
-                <!-- VerticalStackView: Sections, Title -->
-                    <!-- Collapsible on clicking sections: Chapters -->
-        </Grid>
+             BackgroundColor="#191919">
 
-            <!-- At the very bottom -->
-            <Grid ColumnDefinitions="*,*">
-                <HorizontalStackLayout Grid.Column="0">
-                    <!-- <ImageButton Source="" /> -->
-                    <Label Text="Add Sections" />
-                </HorizontalStackLayout>
+    <Grid RowDefinitions="*,auto">
 
+        <!-- MAIN -->
+        <ScrollView Grid.Row="0">
 
-                <HorizontalStackLayout Grid.Column="1">
-                    <!-- <ImageButton Source="" /> -->
-                    <Label Text="Add Scenes" />
-                </HorizontalStackLayout>
-            </Grid>        
+            <VerticalStackLayout Padding="30"
+                                 Spacing="25">
+
+                <!-- HEADER -->
+                <VerticalStackLayout Spacing="4">
+
+                    <Label Text="Manuscript"
+                           FontSize="34"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+
+                    <Label Text="Organize sections, chapters, and scenes."
+                           FontSize="14"
+                           TextColor="#9A9A9A"/>
+
+                </VerticalStackLayout>
+
+                <!-- SECTIONS -->
+                <VerticalStackLayout Spacing="18">
+
+                    <!-- SECTION CARD -->
+                    <Border BackgroundColor="#252525"
+                            Padding="18"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 18">
+
+                        <VerticalStackLayout Spacing="15">
+
+                            <!-- SECTION HEADER -->
+                            <Grid ColumnDefinitions="*,auto">
+
+                                <VerticalStackLayout Spacing="2">
+
+                                    <Label Text="SECTION I"
+                                           FontSize="12"
+                                           TextColor="#888888"/>
+
+                                    <Label Text="The Beginning"
+                                           FontSize="24"
+                                           FontAttributes="Bold"
+                                           TextColor="White"/>
+
+                                </VerticalStackLayout>
+
+                                <Label Grid.Column="1"
+                                       Text="▼"
+                                       FontSize="18"
+                                       TextColor="#AAAAAA"/>
+
+                            </Grid>
+
+                            <!-- CHAPTERS -->
+                            <VerticalStackLayout Spacing="10">
+
+                                <Border BackgroundColor="#303030"
+                                        Padding="14"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 12">
+
+                                    <Grid ColumnDefinitions="auto,*">
+
+                                        <Label Text="01"
+                                               FontAttributes="Bold"
+                                               TextColor="#777777"/>
+
+                                        <VerticalStackLayout Grid.Column="1"
+                                                             Margin="10,0,0,0">
+
+                                            <Label Text="Chapter One"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White"/>
+
+                                            <Label Text="Temporary chapter summary."
+                                                   FontSize="12"
+                                                   TextColor="#9A9A9A"/>
+
+                                        </VerticalStackLayout>
+
+                                    </Grid>
+
+                                </Border>
+
+                                <Border BackgroundColor="#303030"
+                                        Padding="14"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 12">
+
+                                    <Grid ColumnDefinitions="auto,*">
+
+                                        <Label Text="02"
+                                               FontAttributes="Bold"
+                                               TextColor="#777777"/>
+
+                                        <VerticalStackLayout Grid.Column="1"
+                                                             Margin="10,0,0,0">
+
+                                            <Label Text="Chapter Two"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White"/>
+
+                                            <Label Text="Temporary chapter summary."
+                                                   FontSize="12"
+                                                   TextColor="#9A9A9A"/>
+
+                                        </VerticalStackLayout>
+
+                                    </Grid>
+
+                                </Border>
+
+                            </VerticalStackLayout>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <!-- EXTRA PLACEHOLDER -->
+                    <Border HeightRequest="120"
+                            BackgroundColor="#252525"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 18">
+
+                        <Grid>
+                            <Label Text="Additional sections..."
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   TextColor="#777777"/>
+                        </Grid>
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
 
         </ScrollView>
- 
+
+        <!-- BOTTOM ACTION BAR -->
+        <Border Grid.Row="1"
+                BackgroundColor="#222222"
+                Padding="20"
+                StrokeThickness="0">
+
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="15">
+
+                <Border Grid.Column="0"
+                        BackgroundColor="#2C2C2C"
+                        Padding="16"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 14">
+
+                    <HorizontalStackLayout HorizontalOptions="Center"
+                                           Spacing="8">
+
+                        <Label Text="+"
+                               FontSize="18"
+                               TextColor="White"/>
+
+                        <Label Text="Add Section"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+
+                    </HorizontalStackLayout>
+
+                </Border>
+
+                <Border Grid.Column="1"
+                        BackgroundColor="#2C2C2C"
+                        Padding="16"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 14">
+
+                    <HorizontalStackLayout HorizontalOptions="Center"
+                                           Spacing="8">
+
+                        <Label Text="+"
+                               FontSize="18"
+                               TextColor="White"/>
+
+                        <Label Text="Add Scene"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+
+                    </HorizontalStackLayout>
+
+                </Border>
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+
 </ContentView>

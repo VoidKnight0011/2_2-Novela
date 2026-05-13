@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Novela.Resources.Pages.Book.Novela_Preview"
+             BackgroundColor="#191919">
+
+    <ScrollView>
+
+        <VerticalStackLayout Padding="25"
+                             Spacing="25">
+
+            <!-- COVER IMAGE -->
+            <Border HeightRequest="280"
+                    BackgroundColor="#252525"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 20">
+
+                <Grid>
+                    <Label Text="Cover Image"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="#777777"/>
+                </Grid>
+
+            </Border>
+
+            <!-- TITLE + AUTHOR -->
+            <VerticalStackLayout Spacing="6">
+
+                <Label Text="Book Title Placeholder"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       TextColor="White"/>
+
+                <Label Text="by @username"
+                       FontSize="14"
+                       TextColor="#9A9A9A"/>
+
+            </VerticalStackLayout>
+
+            <!-- TABLE OF CONTENTS -->
+            <Border BackgroundColor="#252525"
+                    Padding="18"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 16">
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="TABLE OF CONTENTS"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#888888"/>
+
+                    <Label Text="• Overview"
+                           TextColor="#CCCCCC"/>
+
+                    <Label Text="• Sections"
+                           TextColor="#CCCCCC"/>
+
+                    <Label Text="• Appendices"
+                           TextColor="#CCCCCC"/>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- SECTIONS -->
+            <VerticalStackLayout Spacing="12">
+
+                <Label Text="SECTIONS"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="White"/>
+
+                <!-- ACT 1 -->
+                <Border BackgroundColor="#252525"
+                        Padding="16"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 16">
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="ACT 1: Placeholder Name"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+
+                        <!-- CHAPTERS -->
+                        <VerticalStackLayout Spacing="8">
+
+                            <Border BackgroundColor="#303030"
+                                    Padding="12"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 12">
+
+                                <Label Text="Chapter 1 - Placeholder"
+                                       TextColor="#DDDDDD"/>
+                            </Border>
+
+                            <Border BackgroundColor="#303030"
+                                    Padding="12"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 12">
+
+                                <Label Text="Chapter 2 - Placeholder"
+                                       TextColor="#DDDDDD"/>
+                            </Border>
+
+                            <Border BackgroundColor="#303030"
+                                    Padding="12"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 12">
+
+                                <Label Text="Chapter 3 - Placeholder"
+                                       TextColor="#DDDDDD"/>
+                            </Border>
+
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+                <!-- ACT 2 -->
+                <Border BackgroundColor="#252525"
+                        Padding="16"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 16">
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="ACT 2: Placeholder Name"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+
+                        <VerticalStackLayout Spacing="8">
+
+                            <Border BackgroundColor="#303030"
+                                    Padding="12"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 12">
+                                <Label Text="Chapter 1 - Placeholder"
+                                       TextColor="#DDDDDD"/>
+                            </Border>
+
+                            <Border BackgroundColor="#303030"
+                                    Padding="12"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 12">
+                                <Label Text="Chapter 2 - Placeholder"
+                                       TextColor="#DDDDDD"/>
+                            </Border>
+
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </VerticalStackLayout>
+
+            <!-- APPENDICES -->
+            <Border BackgroundColor="#252525"
+                    Padding="18"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 16">
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="APPENDICES"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+
+                    <Label Text="• Appendix A - Placeholder"
+                           TextColor="#CCCCCC"/>
+
+                    <Label Text="• Appendix B - Placeholder"
+                           TextColor="#CCCCCC"/>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- WIP -->
+            <Border BackgroundColor="#2C2C2C"
+                    Padding="16"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 16">
+
+                <Label Text="WIP SECTION - More features coming soon..."
+                       HorizontalOptions="Center"
+                       TextColor="#888888"/>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentView>
