@@ -9,7 +9,7 @@ namespace Novela.Resources.Pages.Book;
 
 public partial class Novela_Timeline : ContentView
 {
-    private readonly Service_SidebarState _sidebarState;
+
     private readonly Service_Book _book_service;
     private readonly Service_Auth _auth_service;
     private Novela.Resources.Models.Book_Models.Book _currentBook;

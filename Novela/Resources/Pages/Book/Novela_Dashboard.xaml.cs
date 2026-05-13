@@ -127,15 +127,7 @@ public partial class Novela_Dashboard : ContentPage
     #endregion
     
     #region EXTRA
-    public static readonly FilterStatus[] StatusOptions = Enum.GetValues<FilterStatus>();
-    public FilterStatus DefaultStatus = FilterStatus.All;
+        // public static readonly FilterStatus[] StatusOptions = Enum.GetValues<FilterStatus>();
+        // public FilterStatus DefaultStatus = FilterStatus.All;
     #endregion
-}
-
-public enum FilterStatus
-{
-    All,
-    Draft,
-    Editing,
-    Finished
 }

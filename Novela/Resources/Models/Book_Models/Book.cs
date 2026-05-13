@@ -28,8 +28,16 @@ public class Book
     public string book_themes_json { get; set; }
 
     [Ignore]
-    public ImageSource book_cover => book_cover_data != null ? ImageSource.FromStream(() => new MemoryStream(book_cover_data)) : "placeholder_image.png";
-    public byte[]? book_cover_data { get; set; }
+    public ImageSource book_cover 
+    {
+        get
+        {
+            if (!string.IsNullOrEmpty(book_cover_path) && File.Exists(book_cover_path)) return ImageSource.FromFile(book_cover_path);
+            else return "placeholder_image.png";
+        }
+    }
+
+    public string book_cover_path { get; set; }
     
     [Ignore]
     public List<Book_Character> book_characters { get; set; } = new();

@@ -6,10 +6,128 @@
              Padding="0">
 
         <ScrollView>
-            <VerticalStackLayout>
-                
+        <!--     ~1~ COLUMN#1: Side Bar @1@ -->
+        <!-- <Grid Grid.Column="0" RowDefinitions="*,*, *, *, *, *"> -->
+        <!--     ~1~ SideBar: Row#1 @1@ -->
+        <!--     <Border Margin="10, 10, 10, 25"> -->
+        <!--         <Border.GestureRecognizers> -->
+        <!--             ~1~ <TapGestureRecognizer Tapped="to_dashboard" /> @1@ -->
+        <!--         </Border.GestureRecognizers> -->
+        <!-- -->
+        <!-- -->
+        <!--         <HorizontalStackLayout> -->
+        <!--             ~1~ <Image Source="" /> @1@ -->
+        <!--             <Label Text="Back to Library" /> -->
+        <!--         </HorizontalStackLayout> -->
+        <!--     </Border> -->
+        <!--     -->
+        <!--     ~1~ SideBar: Row#2 @1@ -->
+        <!--     <Border Margin="10"> -->
+        <!--         <Border.GestureRecognizers> -->
+        <!--             ~1~ <TapGestureRecognizer Tapped="to_overview" /> @1@ -->
+        <!--         </Border.GestureRecognizers> -->
+        <!-- -->
+        <!-- -->
+        <!--         <HorizontalStackLayout> -->
+        <!--             ~1~ <Image Source="" /> @1@ -->
+        <!--             <Label Text="Overview" /> -->
+        <!--         </HorizontalStackLayout> -->
+        <!--     </Border> -->
+        <!-- -->
+        <!-- -->
+        <!--     ~1~ SideBar: Row#3 @1@ -->
+        <!--     <Border Margin="10"> -->
+        <!--         <Border.GestureRecognizers> -->
+        <!--             ~1~ <TapGestureRecognizer Tapped="to_characters" /> @1@ -->
+        <!--         </Border.GestureRecognizers> -->
+        <!-- -->
+        <!-- -->
+        <!--         <HorizontalStackLayout> -->
+        <!--             ~1~ <Image Source="" /> @1@ -->
+        <!--             <Label Text="Characters" /> -->
+        <!--         </HorizontalStackLayout> -->
+        <!--     </Border> -->
+        <!-- -->
+        <!-- -->
+        <!--     ~1~ SideBar: Row#4 @1@ -->
+        <!--     <Border Margin="10"> -->
+        <!--         <Border.GestureRecognizers> -->
+        <!--             ~1~ <TapGestureRecognizer Tapped="to_timeline" /> @1@ -->
+        <!--         </Border.GestureRecognizers> -->
+        <!-- -->
+        <!-- -->
+        <!--         <HorizontalStackLayout> -->
+        <!--             <Image Source="" /> -->
+        <!--             <Label Text="Timeline" /> -->
+        <!--         </HorizontalStackLayout> -->
+        <!--     </Border> -->
+        <!-- -->
+        <!-- -->
+        <!--     ~1~ SideBar: Row#5 @1@ -->
+        <!--     <Border Margin="10"> -->
+        <!--         <Border.GestureRecognizers> -->
+        <!--             ~1~ <TapGestureRecognizer Tapped="to_manuscript" /> @1@ -->
+        <!--         </Border.GestureRecognizers> -->
+        <!-- -->
+        <!-- -->
+        <!--         <HorizontalStackLayout> -->
+        <!--             <Image Source="" /> -->
+        <!--             <Label Text="Manuscript" /> -->
+        <!--         </HorizontalStackLayout> -->
+        <!--     </Border> -->
+        <!-- -->
+        <!-- -->
+        <!--     ~1~ SideBar: Row#6 @1@ -->
+        <!--     <Border Margin="10"> -->
+        <!--         <Border.GestureRecognizers> -->
+        <!--             ~1~ <TapGestureRecognizer Tapped="to_appendices" /> @1@ -->
+        <!--         </Border.GestureRecognizers> -->
+        <!-- -->
+        <!-- -->
+        <!--         <HorizontalStackLayout> -->
+        <!--             <Image Source="" /> -->
+        <!--             <Label Text="Appendices" /> -->
+        <!--         </HorizontalStackLayout> -->
+        <!--     </Border> -->
+        <!-- -->
+        <!-- -->
+        <!-- </Grid> -->
+        <!-- -->
+        <!-- -->
+        <!-- ~1~ COLUMN#2: Content @1@ -->
+        <!-- <Grid Grid.Column="1" RowDefinitions="*,*,*,*,*,auto"> -->
+        <!--     <Label Text="Characters" Grid.Row="0" /> -->
+        <!-- -->
+        <!-- -->
+        <!--     <VerticalStackLayout Grid.Row="1"> -->
+        <!--         <Label Text="Protagonist" /> -->
+        <!--         ~1~ <CollectionView> @1@ -->
+        <!--     </VerticalStackLayout> -->
+        <!--     -->
+        <!--     <VerticalStackLayout Grid.Row="2"> -->
+        <!--         <Label Text="Supporting" /> -->
+        <!--         ~1~ <CollectionView> @1@ -->
+        <!--     </VerticalStackLayout> -->
+        <!-- -->
+        <!-- -->
+        <!--     <VerticalStackLayout Grid.Row="3"> -->
+        <!--         <Label Text="Antagonist" /> -->
+        <!--         ~1~ <CollectionView> @1@ -->
+        <!--     </VerticalStackLayout> -->
+        <!-- -->
+        <!-- -->
+        <!--     <VerticalStackLayout Grid.Row="4"> -->
+        <!--         <Label Text="Minor" /> -->
+        <!--         ~1~ <CollectionView> @1@ -->
+        <!--     </VerticalStackLayout> -->
+        <!-- -->
+        <!-- -->
+        <!--     <HorizontalStackLayout Grid.RowSpan="5"> -->
+        <!--         <Image Source="" /> -->
+        <!--         <Label Text="Add Character" /> -->
+        <!--     </HorizontalStackLayout> -->
+        <!-- </Grid> -->
 
-            </VerticalStackLayout>
         </ScrollView>
 
 </ContentView>

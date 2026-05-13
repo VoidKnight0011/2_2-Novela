@@ -44,7 +44,6 @@ public static class MauiProgram
         builder.Services.AddTransient<Novela_Dashboard>();
         
             // Services
-            builder.Services.AddSingleton<Service_SidebarState>(s => Service_SidebarState.Instance);
         
             // // Edit Book Pages
             builder.Services.AddTransient<Novela_Overview>();

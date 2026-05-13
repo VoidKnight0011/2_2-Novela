@@ -11,12 +11,12 @@ namespace Novela.Resources.Pages.Extra;
 public partial class Book_Header : ContentView
 {
     private readonly Service_Book _book_service;
-    private Novela.Resources.Models.Book_Models.Book _currentBook;
+    public Novela.Resources.Models.Book_Models.Book current_book { get; set; }
     public Book_Header()
     {
         InitializeComponent();
         _book_service = Service_Book.Instance;
-        _currentBook =  _book_service.CurrentBook;
+        current_book =  _book_service.CurrentBook;
 
         BindingContext = this;
         Loaded += OnLoaded;
@@ -24,7 +24,7 @@ public partial class Book_Header : ContentView
 
     private void OnLoaded(object sender, EventArgs e)
     {
-        _currentBook = _book_service.CurrentBook;
+        current_book = _book_service.CurrentBook;
     }
 
     public async void edit_title(object sender, EventArgs e)
@@ -36,11 +36,11 @@ public partial class Book_Header : ContentView
 
     public async void book_entry_unfocused(object sender, EventArgs e)
     {
-        if (_currentBook != null)
+        if (current_book != null)
         {
-            _currentBook.book_title = book_title_entry.Text;
-            _book_service.update_book(_currentBook);
-            book_title_label.Text = _currentBook.book_title;
+            current_book.book_title = book_title_entry.Text;
+            _book_service.update_book(current_book);
+            book_title_label.Text = current_book.book_title;
         }
         book_title_entry.IsVisible = false;
         book_title_label.IsVisible = true;

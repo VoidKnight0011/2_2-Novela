@@ -19,10 +19,13 @@
 
             <Border Grid.Column="0" Padding="6, 0" HeightRequest="38" WidthRequest="78" StrokeThickness="2.5" StrokeShape="RoundRectangle 8"
                     BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
-                <Picker Title="Status" ItemsSource="{Binding StatusOptions}" SelectedItem="{Binding DefaultStatus}" HorizontalOptions="Center" VerticalOptions="Center" 
-                        FontFamily="Poppins-Regular" FontSize="10" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                    <HorizontalStackLayout>
+                        <Image Source="icon_settings.png" HeightRequest="15" Width="15" Margin="10" />
+                        <Label Text="Filter" Margin="5"
+                               FontFamily="Poppins-Regular" FontSize="10" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"/>
+                    </HorizontalStackLayout>   
             </Border>
-
+            
             <SearchBar Grid.Column="1" VerticalOptions="Center" Placeholder="Search books..."
                        FontFamily="Poppins-Regular" FontSize="13" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}" />
 
@@ -80,7 +83,7 @@
                         </Border.GestureRecognizers>
                         
                         <Grid>
-                            <Image x:Name="books_collection_image" Source="{Binding book_cover, FallbackValue='placeholder_image.png'}" Aspect="AspectFill" Opacity="0.6" />
+                            <Image x:Name="books_collection_image" VerticalOptions="Fill" HorizontalOptions="Fill" Source="{Binding book_cover, FallbackValue='placeholder_image.png'}" Aspect="AspectFill" Opacity="0.6" />
                             
                             <Label Margin="15, 0" Grid.Column="1" Text="{Binding book_title}" VerticalOptions="Center" LineBreakMode="TailTruncation" MaxLines="1" HorizontalOptions="Start"
                                    FontFamily="Poppins-Light" FontSize="12" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#EAEAEA}" />

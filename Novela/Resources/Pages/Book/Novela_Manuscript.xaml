@@ -6,19 +6,29 @@
              Padding="0">
     
         <ScrollView>
-            <VerticalStackLayout Padding="20" Spacing="20">
-                
-                <!-- Title -->
-                <Label Text="Manuscript" HorizontalTextAlignment="Center"
-                       FontFamily="Poppins-Black" FontSize="24" 
-                       TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
-                
-                <!-- Manuscript Content Placeholder -->
-                <Label Text="Manuscript editor goes here..." 
-                       FontFamily="Poppins-Regular" FontSize="14"
-                       TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
-                
-            </VerticalStackLayout>
+               
+        <!-- COLUMN#2: Content -->
+        <Grid RowDefinitions="auto, *, auto">
+            <Label Text="Manuscript" />
+            <!-- Collection View -->
+                <!-- VerticalStackView: Sections, Title -->
+                    <!-- Collapsible on clicking sections: Chapters -->
+        </Grid>
+
+            <!-- At the very bottom -->
+            <Grid ColumnDefinitions="*,*">
+                <HorizontalStackLayout Grid.Column="0">
+                    <!-- <ImageButton Source="" /> -->
+                    <Label Text="Add Sections" />
+                </HorizontalStackLayout>
+
+
+                <HorizontalStackLayout Grid.Column="1">
+                    <!-- <ImageButton Source="" /> -->
+                    <Label Text="Add Scenes" />
+                </HorizontalStackLayout>
+            </Grid>        
+
         </ScrollView>
  
 </ContentView>

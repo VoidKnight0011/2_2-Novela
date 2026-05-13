@@ -96,7 +96,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid ColumnDefinitions="*,*" Column="2">
-                                    <CheckBox Grid.Column="0" WidthRequest="2.5" HeightRequest="2.5" VerticalOptions="Center" IsChecked="True"
+                                    <CheckBox Grid.Column="0" WidthRequest="2.5" HeightRequest="2.5" VerticalOptions="Center" CheckedChanged="on_genretoggle" Loaded="on_genreloaded"
                                               Color="#4A90D9" />
                                     <Label Grid.Column="1" Text="{Binding .}" FontSize="8" VerticalOptions="Center" LineBreakMode="TailTruncation" MaxLines="1"
                                            FontFamily="Poppins-Regular" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
