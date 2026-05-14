@@ -20,5 +20,14 @@ public class User
     public List<Book> user_books { get; set; } = new();
     
     public User_Theme user_theme { get; set; } = User_Theme.Dark;
-    public bool user_dashboard_orientation { get; set; } = true;
+    
+    #region Extra
+        [Ignore]
+        public Status? selected_status { get; set; }
+        [Ignore]
+        public List<Book_Genre>? selected_genres { get; set; }
+
+        public bool user_dashboard_orientation { get; set; } = true;
+
+        #endregion
 }

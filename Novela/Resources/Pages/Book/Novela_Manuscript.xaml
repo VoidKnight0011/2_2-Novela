@@ -1,206 +1,141 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Novela.Resources.Pages.Book.Novela_Manuscript"
-             BackgroundColor="#191919">
+             Padding="0"
+             BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}">
 
-    <Grid RowDefinitions="*,auto">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
 
-        <!-- MAIN -->
-        <ScrollView Grid.Row="0">
+            <!-- Section Management -->
+            <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="10">
+                
+                <!-- Header -->
+                <Label Grid.Row="0" Text="Sections (Arcs)" FontSize="12"
+                       FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
 
-            <VerticalStackLayout Padding="30"
-                                 Spacing="25">
-
-                <!-- HEADER -->
-                <VerticalStackLayout Spacing="4">
-
-                    <Label Text="Manuscript"
-                           FontSize="34"
-                           FontAttributes="Bold"
-                           TextColor="White"/>
-
-                    <Label Text="Organize sections, chapters, and scenes."
-                           FontSize="14"
-                           TextColor="#9A9A9A"/>
-
-                </VerticalStackLayout>
-
-                <!-- SECTIONS -->
-                <VerticalStackLayout Spacing="18">
-
-                    <!-- SECTION CARD -->
-                    <Border BackgroundColor="#252525"
-                            Padding="18"
-                            StrokeThickness="0"
-                            StrokeShape="RoundRectangle 18">
-
-                        <VerticalStackLayout Spacing="15">
-
-                            <!-- SECTION HEADER -->
-                            <Grid ColumnDefinitions="*,auto">
-
-                                <VerticalStackLayout Spacing="2">
-
-                                    <Label Text="SECTION I"
-                                           FontSize="12"
-                                           TextColor="#888888"/>
-
-                                    <Label Text="The Beginning"
-                                           FontSize="24"
-                                           FontAttributes="Bold"
-                                           TextColor="White"/>
-
-                                </VerticalStackLayout>
-
-                                <Label Grid.Column="1"
-                                       Text="▼"
-                                       FontSize="18"
-                                       TextColor="#AAAAAA"/>
-
-                            </Grid>
-
-                            <!-- CHAPTERS -->
-                            <VerticalStackLayout Spacing="10">
-
-                                <Border BackgroundColor="#303030"
-                                        Padding="14"
-                                        StrokeThickness="0"
-                                        StrokeShape="RoundRectangle 12">
-
-                                    <Grid ColumnDefinitions="auto,*">
-
-                                        <Label Text="01"
-                                               FontAttributes="Bold"
-                                               TextColor="#777777"/>
-
-                                        <VerticalStackLayout Grid.Column="1"
-                                                             Margin="10,0,0,0">
-
-                                            <Label Text="Chapter One"
-                                                   FontAttributes="Bold"
-                                                   TextColor="White"/>
-
-                                            <Label Text="Temporary chapter summary."
-                                                   FontSize="12"
-                                                   TextColor="#9A9A9A"/>
-
-                                        </VerticalStackLayout>
-
-                                    </Grid>
-
-                                </Border>
-
-                                <Border BackgroundColor="#303030"
-                                        Padding="14"
-                                        StrokeThickness="0"
-                                        StrokeShape="RoundRectangle 12">
-
-                                    <Grid ColumnDefinitions="auto,*">
-
-                                        <Label Text="02"
-                                               FontAttributes="Bold"
-                                               TextColor="#777777"/>
-
-                                        <VerticalStackLayout Grid.Column="1"
-                                                             Margin="10,0,0,0">
-
-                                            <Label Text="Chapter Two"
-                                                   FontAttributes="Bold"
-                                                   TextColor="White"/>
-
-                                            <Label Text="Temporary chapter summary."
-                                                   FontSize="12"
-                                                   TextColor="#9A9A9A"/>
-
-                                        </VerticalStackLayout>
-
-                                    </Grid>
-
-                                </Border>
-
-                            </VerticalStackLayout>
-
-                        </VerticalStackLayout>
-
-                    </Border>
-
-                    <!-- EXTRA PLACEHOLDER -->
-                    <Border HeightRequest="120"
-                            BackgroundColor="#252525"
-                            StrokeThickness="0"
-                            StrokeShape="RoundRectangle 18">
-
-                        <Grid>
-                            <Label Text="Additional sections..."
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   TextColor="#777777"/>
-                        </Grid>
-
-                    </Border>
-
-                </VerticalStackLayout>
-
-            </VerticalStackLayout>
-
-        </ScrollView>
-
-        <!-- BOTTOM ACTION BAR -->
-        <Border Grid.Row="1"
-                BackgroundColor="#222222"
-                Padding="20"
-                StrokeThickness="0">
-
-            <Grid ColumnDefinitions="*,*"
-                  ColumnSpacing="15">
-
-                <Border Grid.Column="0"
-                        BackgroundColor="#2C2C2C"
-                        Padding="16"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 14">
-
-                    <HorizontalStackLayout HorizontalOptions="Center"
-                                           Spacing="8">
-
-                        <Label Text="+"
-                               FontSize="18"
-                               TextColor="White"/>
-
-                        <Label Text="Add Section"
-                               FontAttributes="Bold"
-                               TextColor="White"/>
-
-                    </HorizontalStackLayout>
-
+                <!-- Section Picker -->
+                <Border Grid.Row="1" StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,0" HeightRequest="40"
+                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" 
+                        Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
+                    <Picker x:Name="section_picker" 
+                            Title="Select a Section" 
+                            ItemDisplayBinding="{Binding section_title}"
+                            SelectedItem="{Binding SelectedSection}"
+                            FontFamily="Poppins-Regular" FontSize="11" 
+                            TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                    <!-- SelectedIndexChanged="on_sectionchanged" --> 
+                    <!-- ItemsSource="{Binding Sections}" -->
+                    <!-- Related sa picker -->
                 </Border>
 
-                <Border Grid.Column="1"
-                        BackgroundColor="#2C2C2C"
-                        Padding="16"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 14">
-
-                    <HorizontalStackLayout HorizontalOptions="Center"
-                                           Spacing="8">
-
-                        <Label Text="+"
-                               FontSize="18"
-                               TextColor="White"/>
-
-                        <Label Text="Add Scene"
-                               FontAttributes="Bold"
-                               TextColor="White"/>
-
+                <!-- Add Section Button -->
+                <Border Grid.Row="2" StrokeThickness="0" StrokeShape="RoundRectangle 8" Padding="12,8" HeightRequest="40"
+                        BackgroundColor="#4A90D9">
+                    <!-- <Border.GestureRecognizers> -->
+                    <!--     <TapGestureRecognizer Tapped="on_addsection" /> -->
+                    <!-- </Border.GestureRecognizers> -->
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior PressedScale="0.95" DefaultAnimationDuration="80"/>
+                    </Border.Behaviors>
+                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Image Source="icon_add.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center" />
+                        <Label Text="Add Section" VerticalOptions="Center" 
+                               FontFamily="Poppins-Black" FontSize="11" TextColor="White"/>
                     </HorizontalStackLayout>
-
                 </Border>
 
             </Grid>
 
-        </Border>
+            <!-- Chapters List -->
+            <Grid RowDefinitions="Auto,*" RowSpacing="10">
+                
+                <Label Grid.Row="0" Text="Chapters" FontSize="12"
+                       FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
 
-    </Grid>
+                <!-- Chapters CollectionView -->
+                <CollectionView Grid.Row="1" 
+                               x:Name="chapters_collection"
+                               ItemsSource="{Binding CurrentChapters}"
+                               EmptyView="No chapters yet. Add one to get started!">
+                    
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="0,0,0,8" 
+                                   StrokeThickness="1" 
+                                   StrokeShape="RoundRectangle 8" 
+                                   Padding="12"
+                                   BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}"
+                                   Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
+                                <!-- <Border.GestureRecognizers> -->
+                                <!--     <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="on_editchapter" /> -->
+                                <!-- </Border.GestureRecognizers> -->
+                                
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                    
+                                    <!-- Chapter Order -->
+                                    <Border Grid.Column="0" 
+                                           WidthRequest="35" HeightRequest="35"
+                                           StrokeThickness="0"
+                                           StrokeShape="RoundRectangle 6"
+                                           BackgroundColor="#4A90D9">
+                                        <Label Text="{Binding chap_order}" 
+                                              HorizontalOptions="Center" VerticalOptions="Center"
+                                              FontFamily="Poppins-Black" FontSize="13" TextColor="White"/>
+                                    </Border>
+
+                                    <!-- Chapter Info -->
+                                    <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                        <Label Text="{Binding chap_title}" 
+                                              FontFamily="Poppins-Black" FontSize="11" 
+                                              TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"
+                                              LineBreakMode="TailTruncation" MaxLines="1"/>
+                                        <Label Text="{Binding chap_synopsis}" 
+                                              FontFamily="Poppins-Light" FontSize="9" 
+                                              TextColor="{AppThemeBinding Light=#757575, Dark=#9E9E9E}"
+                                              LineBreakMode="TailTruncation" MaxLines="2"/>
+                                    </VerticalStackLayout>
+
+                                    <!-- Status Badge -->
+                                    <Border Grid.Column="2" 
+                                           Padding="8,4"
+                                           StrokeThickness="0"
+                                           StrokeShape="RoundRectangle 4"
+                                           BackgroundColor="{AppThemeBinding Light=#E0E0E0, Dark=#3F3F3F}"
+                                           VerticalOptions="Center">
+                                        <Label Text="{Binding chap_status}" 
+                                              FontFamily="Poppins-Regular" FontSize="8" 
+                                              TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"/>
+                                    </Border>
+
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+
+            </Grid>
+
+            <!-- Add Chapter Button -->
+            <Border StrokeThickness="0" StrokeShape="RoundRectangle 8" Padding="12,10" HeightRequest="45"
+                    BackgroundColor="#2E7D32">
+                <!-- <Border.GestureRecognizers> -->
+                <!--     <TapGestureRecognizer Tapped="on_addchapter" /> -->
+                <!-- </Border.GestureRecognizers> -->
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior PressedScale="0.95" DefaultAnimationDuration="80"/>
+                </Border.Behaviors>
+                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Image Source="icon_add.png" HeightRequest="18" WidthRequest="18" VerticalOptions="Center" />
+                    <Label Text="Add Chapter" VerticalOptions="Center" 
+                           FontFamily="Poppins-Black" FontSize="12" TextColor="White"/>
+                </HorizontalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentView>

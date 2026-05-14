@@ -53,9 +53,6 @@ public partial class Book_Header : ContentView
         book_title_label.IsVisible = true;
     }
 
-    public async void to_preview(object sender, EventArgs e)
-    {
-        section_changed?.Invoke(this, null);
-    }
+    public async void to_preview(object sender, EventArgs e) { section_changed?.Invoke(this, "preview"); }
     
 }

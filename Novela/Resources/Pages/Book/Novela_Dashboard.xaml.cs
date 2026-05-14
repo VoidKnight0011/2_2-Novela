@@ -80,6 +80,15 @@ public partial class Novela_Dashboard : ContentPage
             LoadBooks();
         }
         
+        private async void to_filter(object sender, EventArgs e)
+        {
+            var popup = new Extra_Filter();
+            var result = await this.ShowPopupAsync(popup);
+
+            if (result != null) OnPropertyChanged(nameof(the_displayedbooks));
+        }
+        
+        
         private async void to_editbook(object sender, TappedEventArgs e)
         {
             var book = (sender as BindableObject)?.BindingContext
@@ -105,6 +114,7 @@ public partial class Novela_Dashboard : ContentPage
         _user_books.Clear();
         foreach (var b in books)
         {
+            if (!string.IsNullOrEmpty(b.book_genres_json)) b.book_genres = System.Text.Json.JsonSerializer.Deserialize<List<Book_Genre>>(b.book_genres_json);
             _user_books.Add(b);
         }
     }
@@ -121,13 +131,17 @@ public partial class Novela_Dashboard : ContentPage
         get
         {
             IEnumerable<Novela.Resources.Models.Book_Models.Book> result = _user_books;
+            
+            if(_auth_service.CurrentUser.selected_status != null) result = result.Where(b => b.book_status == _auth_service.CurrentUser.selected_status);
+            
+            if (_auth_service.CurrentUser.selected_genres?.Any() == true)
+            {
+                var selected = _auth_service.CurrentUser.selected_genres;
+                result = result.Where(b => selected.All(g => b.book_genres.Contains(g)));
+            }
+            
             return result;
         }
     }
-    #endregion
-    
-    #region EXTRA
-        // public static readonly FilterStatus[] StatusOptions = Enum.GetValues<FilterStatus>();
-        // public FilterStatus DefaultStatus = FilterStatus.All;
     #endregion
 }

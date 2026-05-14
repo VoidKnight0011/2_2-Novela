@@ -19,7 +19,14 @@
 
             <Border Grid.Column="0" Padding="10, 2.5" HorizontalOptions="Fill" StrokeThickness="2.5" StrokeShape="RoundRectangle 8" HeightRequest="40"
                     BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}">
-                    <HorizontalStackLayout>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="to_filter" />
+                </Border.GestureRecognizers>
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior PressedScale="0.90" DefaultAnimationDuration="80"/>
+                </Border.Behaviors>
+                
+                <HorizontalStackLayout>
                         <Image Source="icon_settings.png" HeightRequest="17.5" Width="17.5" Margin="2.5" VerticalOptions="Center" />
                         <Label Text="Filter" Margin="2.5" VerticalOptions="Center"
                                FontFamily="Poppins-Black" FontSize="12" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"/>
@@ -70,6 +77,7 @@
                                              Padding="5" VerticalOptions="Center" Aspect="AspectFit"
                                              BackgroundColor="Transparent" />
                             </Grid>
+                            
                         </Grid>
                     </Border>
                 </DataTemplate>

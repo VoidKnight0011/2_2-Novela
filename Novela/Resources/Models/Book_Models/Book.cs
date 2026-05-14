@@ -53,7 +53,6 @@ public class Book : INotifyPropertyChanged
     
     [Ignore]
     public List<Book_Character> book_characters { get; set; } = new();
-    
     [Ignore]
     public List<Book_Section> book_section { get; set; } = new();
     

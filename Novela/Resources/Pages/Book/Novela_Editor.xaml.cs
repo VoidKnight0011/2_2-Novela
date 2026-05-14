@@ -17,6 +17,7 @@ public partial class Novela_Editor : ContentPage
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
         
         Sidebar.section_changed += on_togglesection;
+        Novela_Header.section_changed += on_togglesection;
         
         current_section("overview");
     }
@@ -34,18 +35,42 @@ public partial class Novela_Editor : ContentPage
         {
             current_section(section);
         }
-        private void current_section (string section)
+        private void current_section(string section)
         {
-            Novela_Editor_ContentArea.Content = section switch
-            {
-                "overview"   => new Novela_Overview(),
-                "characters" => new Novela_Characters(),
-                "timeline"   => new Novela_Timeline(),
-                "manuscript" => new Novela_Manuscript(),
-                "appendices" => new Novela_Appendices(),
-                _            => new Novela_Overview()
-            };
+            Novela_Header.IsVisible = true;
             
+            switch (section)
+            {
+                case "overview":
+                    Novela_Editor_ContentArea.Content = new Novela_Overview();
+                    break;
+                case "characters":
+                    var character_page = new Novela_Characters();
+                    character_page.section_changed += on_togglesection;
+                    Novela_Editor_ContentArea.Content = character_page;
+                    break;
+                case "timeline":
+                    Novela_Editor_ContentArea.Content = new Novela_Timeline();
+                    break;
+                case "manuscript":
+                    Novela_Editor_ContentArea.Content = new Novela_Manuscript();
+                    break;
+                case "appendices":
+                    Novela_Editor_ContentArea.Content = new Novela_Appendices();
+                    break;
+                case "preview":
+                    Novela_Header.IsVisible = false;
+                    Novela_Editor_ContentArea.Content = new Novela_Preview();;
+                    break;
+                case "charprofile":
+                    Novela_Editor_ContentArea.Content = new Novela_CharacterProfile();
+                    section = "characters";
+                    break;
+                default:
+                    Novela_Editor_ContentArea.Content = new Novela_Overview();
+                    break;
+            }
+
             Sidebar.set_activeitem(section);
         }
     #endregion

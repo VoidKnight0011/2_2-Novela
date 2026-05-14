@@ -76,6 +76,4 @@ public class Service_Auth
             CurrentUser = null;
         }
     #endregion
-    
-    
 }

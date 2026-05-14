@@ -2,7 +2,8 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Novela.Resources.Pages.Book.Novela_Overview"
-             Padding="0">
+             Padding="0"
+             BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}">
     
         <ScrollView>
             <VerticalStackLayout Padding="20" Spacing="20">
@@ -37,17 +38,24 @@
                         <Grid Grid.Column="1" RowDefinitions="*,Auto" RowSpacing="7.5">
                             
                             <!-- Info: Description -->
-                            <Grid Grid.RowDefinitions="Auto, *" Grid.Row="0" HorizontalOptions="Fill">
+                            <Grid Grid.Row="0">
 
-                                <Label Grid.Row="0" x:Name="book_description" Text="Description" FontSize="12"
-                                       FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"/>
+                                <VerticalStackLayout Spacing="-2.5" HorizontalOptions="Fill" VerticalOptions="Start">
 
-                                <Border Grid.Row="1" StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,6" VerticalOptions="Fill"
-                                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
+                                    <Label Text="Description"
+                                           FontSize="12" FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
 
-                                    <Editor Placeholder="Enter Book Description..." FontSize="8" Text="{Binding CurrentBook.book_description, Mode=TwoWay}" VerticalOptions="Fill" AutoSize="Disabled"
-                                            FontFamily="Poppins-Light" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
-                                </Border>
+                                    <Border StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,6" HeightRequest="140"
+                                            BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
+
+                                        <!-- <ScrollView Orientation="Vertical" -->
+                                        <!--             VerticalScrollBarVisibility="Always"> -->
+                                            <Editor x:Name="book_description" Text="{Binding CurrentBook.book_description, Mode=TwoWay}" Placeholder="Enter Book Description..." AutoSize="Disabled" IsTextPredictionEnabled="True" HeightRequest="140" VerticalOptions="Start" HorizontalOptions="Fill"
+                                                    FontSize="8" FontFamily="Poppins-Light" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}" />
+                                        <!-- </ScrollView> -->
+                                    </Border>
+                                </VerticalStackLayout>
+
                             </Grid>
                             
                             <!-- Info: Status -->

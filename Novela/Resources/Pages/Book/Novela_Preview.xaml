@@ -3,7 +3,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Novela.Resources.Pages.Book.Novela_Preview"
-             BackgroundColor="#191919">
+             BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}">
 
     <ScrollView>
 
@@ -16,26 +16,20 @@
                     StrokeThickness="0"
                     StrokeShape="RoundRectangle 20">
 
-                <Grid>
-                    <Label Text="Cover Image"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           TextColor="#777777"/>
-                </Grid>
+                <Image x:Name="book_cover" Aspect="AspectFill" />
 
             </Border>
 
             <!-- TITLE + AUTHOR -->
             <VerticalStackLayout Spacing="6">
 
-                <Label Text="Book Title Placeholder"
-                       FontSize="32"
-                       FontAttributes="Bold"
+                <Label x:Name="book_title" HorizontalTextAlignment="Center"
+                       FontSize="20"
                        TextColor="White"/>
 
-                <Label Text="by @username"
-                       FontSize="14"
-                       TextColor="#9A9A9A"/>
+                <Label x:Name="user_name" HorizontalTextAlignment="Center"
+                       FontSize="20"
+                       TextColor="White"/>
 
             </VerticalStackLayout>
 

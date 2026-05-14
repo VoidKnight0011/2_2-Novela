@@ -1,7 +1,265 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Novela.Resources.Pages.Book.Novela_CharacterProfile">
-    
+             x:Class="Novela.Resources.Pages.Book.Novela_CharacterProfile"
+             Padding="0"
+             BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}">
+
+    <ScrollView>
+
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Character Details -->
+            <Grid RowDefinitions="*, Auto">
+
+                <!-- Top Section -->
+                <Grid Grid.Row="0"
+                      ColumnDefinitions="*,*"
+                      ColumnSpacing="12"
+                      VerticalOptions="Start">
+
+                    <!-- LEFT SIDE -->
+                    <Grid Grid.Column="0"
+                          RowDefinitions="Auto,Auto,Auto"
+                          RowSpacing="10">
+
+                        <!-- Character Name -->
+                        <VerticalStackLayout Spacing="-2.5">
+
+                            <Label Text="Character Name"
+                                   FontSize="12"
+                                   FontFamily="Poppins-Black"
+                                   TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+
+                            <Border StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 8"
+                                    Padding="10,2"
+                                    HeightRequest="40"
+                                    Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}"
+                                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
+
+                                <Entry Placeholder="Enter Character Name..."
+                                       FontSize="8"
+                                       FontFamily="Poppins-Regular"
+                                       TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"
+                                       PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"
+                                       BackgroundColor="Transparent"/>
+
+                            </Border>
+
+                        </VerticalStackLayout>
+
+                        <!-- Role in Story -->
+                        <VerticalStackLayout Grid.Row="1"
+                                             Spacing="-2.5">
+
+                            <Label Text="Role in the Story"
+                                   FontSize="12"
+                                   FontFamily="Poppins-Black"
+                                   TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+
+                            <Border StrokeThickness="1.5"
+                                    StrokeShape="RoundRectangle 8"
+                                    Padding="10,0"
+                                    HeightRequest="40"
+                                    Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}"
+                                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
+
+                                <Picker Title="Select Role"
+                                        FontSize="10"
+                                        FontFamily="Poppins-Regular"
+                                        TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+
+                            </Border>
+
+                        </VerticalStackLayout>
+
+                        <!-- Character Type -->
+                        <VerticalStackLayout Grid.Row="2"
+                                             Spacing="-2.5">
+
+                            <Label Text="Character Category"
+                                   FontSize="12"
+                                   FontFamily="Poppins-Black"
+                                   TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+
+                            <Border StrokeThickness="1.5"
+                                    StrokeShape="RoundRectangle 8"
+                                    Padding="10,0"
+                                    HeightRequest="40"
+                                    Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}"
+                                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
+
+                                <Picker Title="Select Category"
+                                        FontSize="10"
+                                        FontFamily="Poppins-Regular"
+                                        TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+
+                            </Border>
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                    <!-- RIGHT SIDE: Character Image -->
+                    <Border Grid.Column="1"
+                            HeightRequest="200"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 8">
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="on_editcharacterimage"/>
+                        </Border.GestureRecognizers>
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0"
+                                                 EndPoint="0,1">
+
+                                <GradientStop Color="#00000000"
+                                              Offset="0.0" />
+
+                                <GradientStop Color="#66000000"
+                                              Offset="1.0" />
+
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Grid>
+
+                            <Image Source="{Binding SelectedCharacter.character_image}"
+                                   Aspect="AspectFill"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
+
+                            <Grid BackgroundColor="#66000000">
+
+                                <Label Text="📷 Tap to Edit Image"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontSize="Micro"
+                                       FontFamily="Poppins-Regular"
+                                       TextColor="White"/>
+
+                            </Grid>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+                <!-- Buttons -->
+                <Grid Grid.Row="1"
+                      ColumnDefinitions="*,*"
+                      ColumnSpacing="10"
+                      Margin="0,10,0,0">
+
+                    <Button Grid.Column="0"
+                            Text="Delete"
+                            Clicked="on_deletecharacter"
+                            FontSize="10"
+                            HeightRequest="42"
+                            CornerRadius="8"
+                            BorderWidth="0"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center"
+                            FontFamily="Poppins-Black"
+                            TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"
+                            BackgroundColor="{AppThemeBinding Light=#E0E0E0, Dark=#3F3F3F}"/>
+
+                    <Button Grid.Column="1"
+                            Text="Save"
+                            Clicked="on_savecharacter"
+                            FontSize="8"
+                            HeightRequest="42"
+                            CornerRadius="8"
+                            BorderWidth="0"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center"
+                            FontFamily="Poppins-Black"
+                            TextColor="White"
+                            BackgroundColor="#2E7D32"/>
+
+                </Grid>
+
+            </Grid>
+
+            <!-- Synopsis -->
+            <Grid RowDefinitions="Auto,*"
+                  RowSpacing="5">
+
+                <Label Grid.Row="0"
+                       Text="Synopsis"
+                       FontSize="12"
+                       FontFamily="Poppins-Black"
+                       TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+
+                <Border Grid.Row="1"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 8"
+                        Padding="10,8"
+                        HeightRequest="130"
+                        Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}"
+                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
+
+                    <Editor Placeholder="Describe the character briefly..."
+                            AutoSize="Disabled"
+                            HeightRequest="130"
+                            FontSize="8"
+                            FontFamily="Poppins-Light"
+                            TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"
+                            PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"
+                            BackgroundColor="Transparent"/>
+
+                </Border>
+
+            </Grid>
+
+            <!-- Extra Details -->
+            <Grid RowDefinitions="Auto,*">
+
+                <Label Grid.Row="0"
+                       Text="Additional Notes"
+                       FontSize="12"
+                       FontFamily="Poppins-Black"
+                       TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+
+                <Grid Grid.Row="1"
+                      ColumnDefinitions="*,Auto"
+                      ColumnSpacing="8"
+                      HorizontalOptions="Start">
+
+                    <Border Grid.Column="0"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 8"
+                            Padding="10,2.5"
+                            HeightRequest="40"
+                            Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}"
+                            BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
+
+                        <Entry Placeholder="e.g., Secretive, Loyal, Obsessed..."
+                               FontSize="8"
+                               FontFamily="Poppins-Regular"
+                               TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}"
+                               PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"
+                               BackgroundColor="Transparent"/>
+
+                    </Border>
+
+                    <ImageButton Grid.Column="1"
+                                 Source="icon_add.png"
+                                 HeightRequest="3"
+                                 WidthRequest="3"
+                                 CornerRadius="12"
+                                 Padding="3"
+                                 BackgroundColor="#4A90D9"/>
+
+                </Grid>
+
+            </Grid>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
 </ContentView>
