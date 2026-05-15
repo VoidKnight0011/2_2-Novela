@@ -24,11 +24,11 @@
             <VerticalStackLayout Spacing="6">
 
                 <Label x:Name="book_title" HorizontalTextAlignment="Center"
-                       FontSize="20"
+                       FontSize="20" FontFamily="Poppins-Black"
                        TextColor="White"/>
 
                 <Label x:Name="user_name" HorizontalTextAlignment="Center"
-                       FontSize="20"
+                       FontSize="10"
                        TextColor="White"/>
 
             </VerticalStackLayout>

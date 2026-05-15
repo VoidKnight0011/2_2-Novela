@@ -116,7 +116,7 @@
         </CollectionView>
 
         <!-- LAYER #4 — FAB -->
-        <Border StrokeThickness="3" Grid.Row="2" HorizontalOptions="End" VerticalOptions="End" Margin="16, 20" StrokeShape="RoundRectangle 10" Padding="2.5"
+        <Border StrokeThickness="3" Grid.Row="2" HorizontalOptions="End" VerticalOptions="End" Margin="15, 30" StrokeShape="RoundRectangle 10" Padding="2.5"
                 BackgroundColor="#4A90D9" Stroke="#234263">
             <Border.GestureRecognizers>
                 <TapGestureRecognizer Tapped="to_addbook" />

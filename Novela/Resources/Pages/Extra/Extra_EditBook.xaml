@@ -5,69 +5,66 @@
                x:Class="Novela.Resources.Pages.Extra.Extra_EditBook"
                Color="Transparent">
 
-    <Border StrokeThickness="0" Padding="10, 20" StrokeShape="RoundRectangle 10" WidthRequest="300"
-            BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}">
+    <Border StrokeThickness="0" Padding="0" WidthRequest="300" StrokeShape="RoundRectangle 10"
+            BackgroundColor="{AppThemeBinding Light=#bcbcbc, Dark=#191919}">
 
-        <Grid RowDefinitions="Auto, *, Auto" RowSpacing="15">
+        <Grid RowDefinitions="Auto,*,Auto" RowSpacing="10">
 
             <!-- Header -->
-            <Label Grid.Row="0" Text="Edit Book" FontSize="22" HorizontalTextAlignment="Center"
-                   FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"/>
+            <Border Grid.Row="0" Padding="15,10" StrokeThickness="0"
+                    BackgroundColor="{AppThemeBinding Light=#c5c5c5, Dark=#141414}">
+                <Label Text="Edit Book" HorizontalTextAlignment="Center"
+                       FontSize="22" FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+            </Border>
 
-            <!-- Main Content: 2 columns -->
-            <Grid Grid.Row="1" ColumnDefinitions="*, *" ColumnSpacing="15">
+            <!-- Content -->
+            <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="12" Margin="15,0">
 
-                <!-- LEFT: Book Cover -->
-                <Border Grid.Column="0" StrokeThickness="0" StrokeShape="RoundRectangle 5" HeightRequest="245" HorizontalOptions="Fill" VerticalOptions="Start">
+                <!-- Cover -->
+                <Border Grid.Column="0" StrokeThickness="0" HeightRequest="240" StrokeShape="RoundRectangle 8">
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="on_editcover" />
+                        <TapGestureRecognizer Tapped="on_editcover"/>
                     </Border.GestureRecognizers>
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0,0 " EndPoint="0, 1">
-                            <GradientStop Color="#00000000" Offset="0.0" />
-                            <GradientStop Color="#66000000" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Border.Background>
-                            
+
                     <Grid>
-                        <Image Source="{Binding book_cover}" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Image Source="{Binding book_cover}" Aspect="AspectFill"/>
 
                         <Grid BackgroundColor="#66000000">
-                            <Label Text="📷 Tap to Edit Cover" HorizontalOptions="Center" VerticalOptions="Center" 
-                                   FontSize="Micro" FontFamily="Poppins-Regular" TextColor="White" />
+                            <Label Text="📷 Tap to Edit Cover" HorizontalOptions="Center" VerticalOptions="Center"
+                                   FontSize="Micro" FontFamily="Poppins-Regular" TextColor="White"/>
                         </Grid>
                     </Grid>
+                    
                 </Border>
 
-                <!-- RIGHT: Title & Description -->
+                
+                <!-- Inputs -->
                 <VerticalStackLayout Grid.Column="1" Spacing="10">
 
                     <!-- Title -->
-                    <VerticalStackLayout Spacing="-2.5">
-                        <Label Text="Title" FontSize="12"
-                               FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"/>
-                        <Border StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,6"
-                                Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}"
-                                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
-                            <Editor x:Name="book_title" Text="{Binding book_title, Mode=TwoWay}" Placeholder="Enter Book Title" AutoSize="Disabled" 
-                                    FontFamily="Poppins-Light" FontSize="8" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
-                        </Border>
-                    </VerticalStackLayout>
-
-                    <!-- Description -->
-                    <VerticalStackLayout Spacing="-2.5" VerticalOptions="Fill">
-
-                        <Label Text="Description"
+                    <VerticalStackLayout Spacing="0">
+                        <Label Text="Title"
                                FontSize="12" FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"/>
 
-                        <Border StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,6" VerticalOptions="FillAndExpand" HeightRequest="140"
-                                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
+                        <Border StrokeThickness="0" Padding="10,6" StrokeShape="RoundRectangle 8"
+                                BackgroundColor="{AppThemeBinding Light=#c5c5c5, Dark=#151515}">
 
-                            <Editor x:Name="book_description" Text="{Binding book_description, Mode=TwoWay}" Placeholder="Enter Book Description..." VerticalOptions="FillAndExpand" AutoSize="Disabled"
-                                    FontSize="8" FontFamily="Poppins-Light" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
-
+                            <Editor x:Name="book_title" Text="{Binding book_title, Mode=TwoWay}" Placeholder="Enter Book Title" AutoSize="Disabled"
+                                    FontFamily="Poppins-Light" FontSize="8" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
                         </Border>
 
+                    </VerticalStackLayout>
+
+                    
+                    <!-- Description -->
+                    <VerticalStackLayout Spacing="0" VerticalOptions="FillAndExpand">
+                        <Label Text="Description"
+                               FontSize="12" FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"/>
+                        <Border StrokeThickness="0" Padding="10,6" HeightRequest="170" StrokeShape="RoundRectangle 8"
+                                BackgroundColor="{AppThemeBinding Light=#c5c5c5, Dark=#151515}">
+                            <Editor x:Name="book_description" Text="{Binding book_description, Mode=TwoWay}" Placeholder="Enter Book Description..." VerticalOptions="FillAndExpand" AutoSize="Disabled"
+                                    FontFamily="Poppins-Light" FontSize="8" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}"/>
+                        </Border>
                     </VerticalStackLayout>
 
                 </VerticalStackLayout>
@@ -75,26 +72,33 @@
             </Grid>
 
             <!-- Buttons -->
-            <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="10">
-                <Border Grid.Column="0" StrokeThickness="0" HeightRequest="42" StrokeShape="RoundRectangle 8"
-                        BackgroundColor="{AppThemeBinding Light=#E0E0E0, Dark=#3F3F3F}">
+            <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="10" Margin="15">
+                <!-- CLOSE -->
+                <Border Grid.Column="0" HeightRequest="42" StrokeThickness="0" StrokeShape="RoundRectangle 8"
+                        BackgroundColor="{AppThemeBinding Light=#c5c5c5, Dark=#141414}">
+
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="popup_close"/>
                     </Border.GestureRecognizers>
-                    <Label Text="Cancel" FontSize="13" HorizontalOptions="Center" VerticalOptions="Center"
-                           FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"/>
-                </Border>
 
-                <Border Grid.Column="1" StrokeThickness="0" HeightRequest="42" StrokeShape="RoundRectangle 8"
+                    <Label Text="Cancel" HorizontalOptions="Center" VerticalOptions="Center"
+                           FontSize="13" FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+                </Border>
+                
+                <!-- SAVE -->
+                <Border Grid.Column="1" HeightRequest="42" StrokeThickness="0" StrokeShape="RoundRectangle 8"
                         BackgroundColor="#2E7D32">
+
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="popup_save"/>
                     </Border.GestureRecognizers>
-                    <Label Text="Save" HorizontalOptions="Center" VerticalOptions="Center" FontSize="13"
-                           FontFamily="Poppins-Black" TextColor="White"/>
+
+                    <Label Text="Add" HorizontalOptions="Center" VerticalOptions="Center"
+                           FontFamily="Poppins-Black" FontSize="13" TextColor="White" />
                 </Border>
             </Grid>
 
         </Grid>
     </Border>
+
 </toolkit:Popup>

@@ -4,6 +4,7 @@ public enum Book_Genre
 { 
     Fantasy,
     Adventure,
+    Action,
     Historical, 
     Comedy,
     Horror,

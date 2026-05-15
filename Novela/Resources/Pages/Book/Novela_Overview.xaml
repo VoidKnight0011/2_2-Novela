@@ -48,11 +48,11 @@
                                     <Border StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10,6" HeightRequest="140"
                                             BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
 
-                                        <!-- <ScrollView Orientation="Vertical" -->
-                                        <!--             VerticalScrollBarVisibility="Always"> -->
-                                            <Editor x:Name="book_description" Text="{Binding CurrentBook.book_description, Mode=TwoWay}" Placeholder="Enter Book Description..." AutoSize="Disabled" IsTextPredictionEnabled="True" HeightRequest="140" VerticalOptions="Start" HorizontalOptions="Fill"
+                                        <ScrollView Orientation="Vertical"
+                                                    VerticalScrollBarVisibility="Always">
+                                            <Editor x:Name="book_description" Text="{Binding CurrentBook.book_description, Mode=TwoWay}" Placeholder="Enter Book Description..." AutoSize="TextChanges" IsTextPredictionEnabled="True" HeightRequest="140" VerticalOptions="Start" HorizontalOptions="Fill"
                                                     FontSize="8" FontFamily="Poppins-Light" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" PlaceholderColor="{AppThemeBinding Light=#9E9E9E, Dark=#757575}" />
-                                        <!-- </ScrollView> -->
+                                        </ScrollView>
                                     </Border>
                                 </VerticalStackLayout>
 

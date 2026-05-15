@@ -27,11 +27,19 @@ public partial class Novela_Manuscript : ContentView
     }
     
     #region Toolbar
-    private void to_settings(object sender, EventArgs e) { }
-    private void to_about(object sender, EventArgs e) { }
-    private async void to_logout(object sender, EventArgs e)
+        private void to_settings(object sender, EventArgs e) { }
+        private void to_about(object sender, EventArgs e) { }
+        private async void to_logout(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//auth");
+        }
+    #endregion
+    
+    #region Section
+
+    public void section_toggle(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//auth");
+        
     }
     #endregion
 }

@@ -36,17 +36,17 @@ public class Service_Book
         }
     #endregion
     
-        #region SearchBooks
-
-        public List<Book> get_userbook_search(int userId, string search)
-        {
-            if (string.IsNullOrWhiteSpace(search)) return get_userbooks(userId);
-            return _database.Table<Book>()
-                .Where(n => n.user_id == userId
-                            && n.book_title.ToLower().Contains(search.ToLower()))
-                .ToList();
-        }
-        #endregion
+        // #region SearchBooks
+        //
+        // public List<Book> get_userbook_search(int userId, string search)
+        // {
+        //     if (string.IsNullOrWhiteSpace(search)) return get_userbooks(userId);
+        //     return _database.Table<Book>()
+        //         .Where(n => n.user_id == userId
+        //                     && n.book_title.ToLower().Contains(search.ToLower()))
+        //         .ToList();
+        // }
+        // #endregion
     
     #region CreateBooks
         public int create_book(Book book)

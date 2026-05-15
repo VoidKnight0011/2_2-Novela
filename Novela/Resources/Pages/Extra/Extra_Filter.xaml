@@ -5,74 +5,81 @@
                x:Class="Novela.Resources.Pages.Extra.Extra_Filter"
                Color="Transparent">
 
-    <Border StrokeThickness="0" Padding="15,20" WidthRequest="300" StrokeShape="RoundRectangle 10"
-            BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#2C2C2C}">
-
-        <Grid RowDefinitions="Auto, Auto, *, Auto" RowSpacing="15">
-
-            <!-- Header -->
-            <Label Grid.Row="0" Text="Filter" HorizontalTextAlignment="Center"
-                   FontSize="22" FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
-            
-            <!-- Status -->
-            <Border Grid.Row="1" StrokeThickness="1" StrokeShape="RoundRectangle 8"
-                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}" Stroke="{AppThemeBinding Light=#DADADA, Dark=#3F3F3F}">
-                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
-                    <RadioButton x:Name="button_all" Content="All" FontSize="10" CheckedChanged="on_statuschanged" Value="All" 
-                                 FontFamily="Poppins-Regular" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
-                    
-                    <RadioButton x:Name="button_draft" Content="Draft" FontSize="10" CheckedChanged="on_statuschanged" Value="Draft" 
-                        FontFamily="Poppins-Regular" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
-
-                    <RadioButton x:Name="button_editing" Content="Editing" FontSize="10" CheckedChanged="on_statuschanged" Value="Editing" 
-                        FontFamily="Poppins-Regular" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
-
-                    <RadioButton x:Name="button_finished" Content="Finished" FontSize="10" CheckedChanged="on_statuschanged" Value="Finished"
-                        FontFamily="Poppins-Regular" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
-
-                </HorizontalStackLayout>
-            </Border>
-            
-            <!-- Genres -->
-            <CollectionView ItemsSource="{Binding GenreOptions}" Grid.Row="2">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Span="4" Orientation="Vertical" HorizontalItemSpacing="2" VerticalItemSpacing="2"/>
-                </CollectionView.ItemsLayout>
-                        
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid ColumnDefinitions="*,*" Column="2">
-                            <CheckBox BindingContext="{Binding .}" Grid.Column="0" WidthRequest="2.5" HeightRequest="2.5" VerticalOptions="Center" Loaded="on_genreloaded" CheckedChanged="on_genretoggle"
-                                      Color="#4A90D9" />
-                            <Label Grid.Column="1" Text="{Binding .}" FontSize="8" VerticalOptions="Center" LineBreakMode="TailTruncation" MaxLines="1"
-                                   FontFamily="Poppins-Regular" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                        
-            </CollectionView>
+    <Border StrokeThickness="0" Padding="0" WidthRequest="300" StrokeShape="RoundRectangle 10"
+            BackgroundColor="{AppThemeBinding Light=#bcbcbc, Dark=#191919}">
         
-            <!-- Buttons -->
-            <Grid Grid.Row="3" RowDefinitions="*,*" RowSpacing="10">
-                <Border Grid.Row="1" StrokeThickness="0" HeightRequest="42" StrokeShape="RoundRectangle 8"
-                        BackgroundColor="{AppThemeBinding Light=#E0E0E0, Dark=#3F3F3F}">
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="filter_clear"/>
-                    </Border.GestureRecognizers>
-                    <Label Text="Clear" FontSize="13" HorizontalOptions="Center" VerticalOptions="Center"
-                           FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"/>
+            <Grid RowDefinitions="Auto, Auto, *, Auto" RowSpacing="10">
+                <Border Grid.Row="0" Padding="15,10" StrokeThickness="0"
+                        BackgroundColor="{AppThemeBinding Light=#c5c5c5, Dark=#141414}">
+                    <Label Text="Filter" HorizontalTextAlignment="Center"
+                           FontSize="22" FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
                 </Border>
+                
+                <VerticalStackLayout Grid.Row="1" Spacing="0" Margin="15,0">
+                    <Label Text="Status"
+                           FontSize="12" FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+                    
+                    <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="4">
+                        <RadioButton Grid.Column="0" Content="All" FontSize="8" x:Name="button_all" CheckedChanged="on_statuschanged" Value="All" HorizontalOptions="Center"
+                                     FontFamily="Poppins-Regular"  TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                        
+                        <RadioButton Grid.Column="1" Content="Draft" FontSize="8"  CheckedChanged="on_statuschanged" Value="Draft" x:Name="button_draft" HorizontalOptions="Center" 
+                                     FontFamily="Poppins-Regular"  TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
 
-                <Border Grid.Row="0" StrokeThickness="0" HeightRequest="42" StrokeShape="RoundRectangle 8"
-                        BackgroundColor="#2E7D32">
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="popup_save"/>
-                    </Border.GestureRecognizers>
-                    <Label Text="Save" HorizontalOptions="Center" VerticalOptions="Center" FontSize="13"
-                           FontFamily="Poppins-Black" TextColor="White"/>
-                </Border>
+                        <RadioButton Grid.Column="2" Content="Editing" FontSize="8" CheckedChanged="on_statuschanged" Value="Editing" x:Name="button_editing" HorizontalOptions="Center" 
+                                     FontFamily="Poppins-Regular"  TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+
+                        <RadioButton Grid.Column="3" Content="Finished" FontSize="8" CheckedChanged="on_statuschanged" Value="Finished" x:Name="button_finished" HorizontalOptions="Center"
+                                     FontFamily="Poppins-Regular" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                    </Grid>
+                </VerticalStackLayout>
+                
+                <VerticalStackLayout Grid.Row="2" Spacing="0" Margin="15,0">
+                    <Label Text="Genres"
+                           FontSize="12" FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}" />
+                    
+                    <CollectionView ItemsSource="{Binding GenreOptions}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Span="3" Orientation="Vertical" HorizontalItemSpacing="5" VerticalItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
+                                
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="0">
+                                    <CheckBox Grid.Column="0"  BindingContext="{Binding .}" VerticalOptions="Center"  Loaded="on_genreloaded"  CheckedChanged="on_genretoggle"
+                                            Color="#4A90D9" />
+                                    
+                                    <Label Grid.Column="1" Text="{Binding .}"  FontSize="8" VerticalOptions="Center"  LineBreakMode="TailTruncation" MaxLines="1"
+                                         FontFamily="Poppins-Regular" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                                
+                    </CollectionView>
+                </VerticalStackLayout>
+                
+                <Grid Grid.Row="3" ColumnDefinitions="*,*" ColumnSpacing="10" Margin="15">
+                    
+                    <Border Grid.Column="0" StrokeThickness="0" HeightRequest="42" StrokeShape="RoundRectangle 8"
+                            BackgroundColor="{AppThemeBinding Light=#c5c5c5, Dark=#151515}">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="filter_clear"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="Clear" FontSize="13" HorizontalOptions="Center" VerticalOptions="Center"
+                             FontFamily="Poppins-Black" TextColor="{AppThemeBinding Light=#2C2C2C, Dark=#F4F4F4}"/>
+                    </Border>
+                    
+                    <Border Grid.Column="1" StrokeThickness="0" HeightRequest="42" StrokeShape="RoundRectangle 8"
+                          BackgroundColor="#2E7D32">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="popup_save"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="Save" FontSize="13" HorizontalOptions="Center" VerticalOptions="Center"
+                             FontFamily="Poppins-Black" TextColor="White"/>
+                    </Border>
+                </Grid>
+                
             </Grid>
-        </Grid>
     </Border>
 
 </toolkit:Popup>

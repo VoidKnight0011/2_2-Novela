@@ -4,12 +4,11 @@ using SQLite;
 
 namespace Novela.Resources.Models.Book_Models;
 
-[Table("Novela_User_Books")]
+[Table("Novela_User_Book")]
 public class Book : INotifyPropertyChanged
 {
     [PrimaryKey, AutoIncrement]
     public int book_id { get; set; }
-    
     public int user_id {get; set;}
     
     [MaxLength(200)]
@@ -55,7 +54,9 @@ public class Book : INotifyPropertyChanged
     public List<Book_Character> book_characters { get; set; } = new();
     [Ignore]
     public List<Book_Section> book_section { get; set; } = new();
-    
+        [Ignore]
+        public List<Book_Chapter> book_chapters { get; set; } = new();
+
         [Ignore]
         public List<Book_Era> book_era { get; set; } = new();
     
