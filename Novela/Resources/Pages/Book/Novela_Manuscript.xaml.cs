@@ -37,9 +37,14 @@ public partial class Novela_Manuscript : ContentView
     
     #region Section
 
-    public void section_toggle(object sender, EventArgs e)
-    {
-        
-    }
+        public void section_toggle(object sender, EventArgs e)
+        {
+            
+        }
+
+        public void on_addsection(object sender, EventArgs e)
+        {
+            
+        }
     #endregion
 }

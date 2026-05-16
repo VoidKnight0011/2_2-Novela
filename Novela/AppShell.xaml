@@ -12,6 +12,8 @@
                FontSize="Large" TextColor="{AppThemeBinding Light=#1F1F1F, Dark=#EAEAEA}" />
     </Shell.TitleView>
     
+    
+    
     <!-- AUTH -->
     <ShellContent
         ContentTemplate="{DataTemplate auth:Novela_Auth}"
@@ -19,8 +21,6 @@
 
     <!-- BOOKS -->
     <ShellContent
-        Shell.ForegroundColor="{AppThemeBinding Light=#191919, Dark=#F5F5F5}"
-        Shell.BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#191919}"
         ContentTemplate="{DataTemplate main:Novela_Dashboard}"
         Route="dashboard"
     />

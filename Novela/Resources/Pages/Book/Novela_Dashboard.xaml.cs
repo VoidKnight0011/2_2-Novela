@@ -19,6 +19,7 @@ public partial class Novela_Dashboard : ContentPage
     {
         InitializeComponent();
         Shell.SetNavBarIsVisible(this, true);
+        
         _auth_service = Service_Auth.Instance;
         _book_service = Service_Book.Instance;
         

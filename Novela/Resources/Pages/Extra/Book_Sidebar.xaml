@@ -5,10 +5,10 @@
              x:Class="Novela.Resources.Pages.Extra.Book_Sidebar"
              x:Name="Novela_Sidebar"
              VerticalOptions="Fill"
-             BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#191919}">
+             BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#1F1F1F}">
 
     <Border StrokeThickness="0">
-        <Border.StrokeShape>
+        <Border.StrokeShape> 
             <RoundRectangle CornerRadius="0,0,50,0"/>
         </Border.StrokeShape>
 

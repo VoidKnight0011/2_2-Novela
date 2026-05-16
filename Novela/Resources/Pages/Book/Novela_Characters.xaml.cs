@@ -46,6 +46,6 @@ public partial class Novela_Characters : ContentView
 
     }
     
-    private async void to_characterprofile(object sender, EventArgs e) { section_changed?.Invoke(this, "charprofile"); }
+    private async void to_charprofile(object sender, EventArgs e) { section_changed?.Invoke(this, "charprofile"); }
     #endregion
 }

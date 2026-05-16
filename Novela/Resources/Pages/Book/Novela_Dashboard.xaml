@@ -116,7 +116,7 @@
         </CollectionView>
 
         <!-- LAYER #4 — FAB -->
-        <Border StrokeThickness="3" Grid.Row="2" HorizontalOptions="End" VerticalOptions="End" Margin="15, 30" StrokeShape="RoundRectangle 10" Padding="2.5"
+        <Border StrokeThickness="1" Grid.Row="2" HorizontalOptions="End" VerticalOptions="End" Margin="15, 30" StrokeShape="RoundRectangle 10" Padding="1"
                 BackgroundColor="#4A90D9" Stroke="#234263">
             <Border.GestureRecognizers>
                 <TapGestureRecognizer Tapped="to_addbook" />
@@ -127,7 +127,7 @@
 
             <HorizontalStackLayout Spacing="5" Padding="12, 8">
                 <Image Source="icon_add.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
-                <Label Text="Add Book" VerticalOptions="Center"
+                <Label Text="Add Book" VerticalOptions="Center" CharacterSpacing="-0.5"
                        FontFamily="Poppins-Black" FontSize="13" TextColor="#234263"/>
             </HorizontalStackLayout>
         </Border>
